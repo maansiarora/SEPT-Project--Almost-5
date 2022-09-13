@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'choiceLogin.dart';
 
-void main() => runApp(const doctorSignUp());
+void main() => runApp(const patientSignUp());
 
-class doctorSignUp extends StatelessWidget {
-  const doctorSignUp({Key? key}) : super(key: key);
+class patientSignUp extends StatelessWidget {
+  const patientSignUp({Key? key}) : super(key: key);
 
   //static const String _title = '';
 
@@ -15,20 +15,20 @@ class doctorSignUp extends StatelessWidget {
       //title: _title,
       home: Scaffold(
         //appBar: AppBar(title: const Text(_title)),
-        body: MydoctorSignUp(),
+        body: MypatientSignUp(),
       ),
     );
   }
 }
 
-class MydoctorSignUp extends StatefulWidget {
-  const MydoctorSignUp({Key? key}) : super(key: key);
+class MypatientSignUp extends StatefulWidget {
+  const MypatientSignUp({Key? key}) : super(key: key);
 
   @override
-  State<MydoctorSignUp> createState() => _MydoctorSignUp();
+  State<MypatientSignUp> createState() => _MypatientSignUp();
 }
 
-class _MydoctorSignUp extends State<MydoctorSignUp> {
+class _MypatientSignUp extends State<MypatientSignUp> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -47,7 +47,7 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.fromLTRB(30, 100, 30, 30),
                   child: const Text(
-                    'Sign Up as a Doctor',
+                    'Sign Up as a Patient',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 25,
