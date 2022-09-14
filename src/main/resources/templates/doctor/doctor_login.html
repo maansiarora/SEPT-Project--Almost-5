@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Doctor Login</title>
+</head>
+<body>
+<div align="center">
+    <h2>Doctor login</h2>
+    <form th:action="@{/doctor/login}" method="post">
+        <table>
+            <tr>
+                <td>Email: </td>
+                <td><input type="email" required />
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" required />
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
