@@ -1,18 +1,19 @@
 package com.example.nd_medicine.controller;
 
 import com.example.nd_medicine.entity.Doctor;
+import com.example.nd_medicine.entity.DoctorAvailability;
 import com.example.nd_medicine.entity.Patient;
+import com.example.nd_medicine.controller.AvailabilityController;
+import com.example.nd_medicine.repository.DoctorAvailabilityRepository;
 import com.example.nd_medicine.repository.DoctorRepository;
 import com.example.nd_medicine.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import javax.sql.rowset.serial.SerialJavaObject;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/signup")
