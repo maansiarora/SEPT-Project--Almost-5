@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'patientSignUp.dart';
-
 import 'doctorSignUp.dart';
 
 void main() => runApp(const choiceSignUp());
@@ -44,6 +43,7 @@ class _MychoiceSignUp extends State<MychoiceSignUp> {
                 padding: const EdgeInsets.fromLTRB(30, 200, 30, 30),
                 child: const Text(
                   'Are you a doctor or a patient?',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w600,
@@ -64,7 +64,7 @@ class _MychoiceSignUp extends State<MychoiceSignUp> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
-                    backgroundColor: Colors.deepPurple[300],
+                    primary: Colors.deepPurple[300],
                   ),
                   child: const Text('Doctor',
                       style: TextStyle(
@@ -86,7 +86,7 @@ class _MychoiceSignUp extends State<MychoiceSignUp> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
-                    backgroundColor: Colors.deepPurple[300],
+                    primary: Colors.deepPurple[300],
                   ),
                   child: const Text('Patient',
                       style: TextStyle(

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sept/pages/adminLogin.dart';
+import 'patientLogin.dart';
+import 'doctorLogin.dart';
+import 'adminLogin.dart';
 
 void main() => runApp(const choiceLogin());
 
@@ -51,7 +55,13 @@ class _MychoiceLogin extends State<MychoiceLogin> {
                 height: 70,
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const doctorLogin()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
@@ -67,7 +77,13 @@ class _MychoiceLogin extends State<MychoiceLogin> {
                 height: 70,
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const patientLogin()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
@@ -83,7 +99,13 @@ class _MychoiceLogin extends State<MychoiceLogin> {
                 height: 70,
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const adminLogin()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),

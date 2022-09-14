@@ -4,6 +4,9 @@ import 'pages/choiceLogin.dart';
 import 'pages/patientSignUp.dart';
 import 'pages/choiceSignup.dart';
 import 'pages/loginSignUp.dart';
+import 'pages/doctorLogin.dart';
+import 'pages/patientLogin.dart';
+import 'pages/adminLogin.dart';
 
 void main() => runApp(MaterialApp(initialRoute: '/loginSignUp', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
@@ -11,4 +14,7 @@ void main() => runApp(MaterialApp(initialRoute: '/loginSignUp', routes: {
       '/patientSignUp': (context) => const patientSignUp(),
       '/choiceSignUp': (context) => const choiceSignUp(),
       '/loginSignUp': (context) => const loginSignUp(),
+      '/doctorLogin': (context) => const doctorLogin(),
+      '/patientLogin': (context) => const patientLogin(),
+      '/adminLogin': (context) => const adminLogin(),
     }));
