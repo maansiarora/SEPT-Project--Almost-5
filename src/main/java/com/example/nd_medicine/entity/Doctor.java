@@ -17,7 +17,7 @@ public class Doctor {
     private String lastname;
 
     @Column(name = "Phone")
-    private Integer phone;
+    private String phone;
 
     @Column(name = "Specialise")
     private String specialise;
@@ -37,9 +37,9 @@ public class Doctor {
 
     public void setLastname(String lastname) { this.lastname = lastname; }
 
-    public Integer getPhone() { return phone; }
+    public String getPhone() { return phone; }
 
-    public void setPhone(Integer phone) { this.phone = phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
     public String getSpecialise() { return specialise; }
 
