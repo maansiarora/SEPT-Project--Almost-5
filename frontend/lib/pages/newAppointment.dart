@@ -27,7 +27,7 @@ class MynewAppointment extends StatefulWidget {
 }
 
 String dropdownValue = 'Choose specialization';
-String message = '';
+List<String> message = [];
 
 class _MynewAppointment extends State<MynewAppointment> {
   @override
@@ -80,7 +80,7 @@ class _MynewAppointment extends State<MynewAppointment> {
               ])),
           Container(
               alignment: Alignment.center,
-              padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
+              padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
               child: Row(
                 children: [
                   Flexible(
@@ -131,17 +131,33 @@ class _MynewAppointment extends State<MynewAppointment> {
                 ],
               )),
           Container(
-            height: 70,
+            height: 300,
             padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
-            child: Text(message),
+            child: ListView.builder(
+              itemCount: message.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  shape: const Border(
+                    bottom: BorderSide(width: 2.0, color: Colors.purple),
+                  ),
+                  title: Text('${message[index]}'),
+                );
+              },
+            ),
           ),
         ]));
   }
 
   void function() {
-    String status;
+    List<String> status;
     if (dropdownValue == 'Dentist') {
-      status = 'Hi I am a Dentist';
+      status = ['Hi', 'Hello', 'Salut'];
+      setState(() => message = status);
+    } else if (dropdownValue == 'General Practitioner') {
+      status = ['Hey', 'WhatsUp', 'Cool'];
+      setState(() => message = status);
+    } else if (dropdownValue == 'Choose specialization') {
+      status = ['Please Select Specialization'];
       setState(() => message = status);
     }
   }
