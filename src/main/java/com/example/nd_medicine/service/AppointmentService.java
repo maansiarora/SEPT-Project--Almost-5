@@ -15,6 +15,9 @@ public class AppointmentService {
         this.appointmentRepository = appointmentRepository;
     }
 
+    public Appointment create(Appointment newAppointment) {
+        return appointmentRepository.save(newAppointment);
+    }
     public List<Appointment> findByDoctorId(Long doctorId) {
         return appointmentRepository.findAppointmentsByDoctorId(doctorId);
     }
@@ -25,9 +28,5 @@ public class AppointmentService {
 
     public Appointment findAppointmentByAppointmentId(Long appointmentId) {
         return appointmentRepository.findAppointmentByAppointmentId(appointmentId);
-    }
-
-    public Appointment create(Appointment newAppointment) {
-        return appointmentRepository.save(newAppointment);
     }
 }
