@@ -6,28 +6,27 @@ import javax.persistence.*;
 @Table(name="Doctors")
 public class Doctor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DocID")
-    private Integer id;
+    private Long id;
 
     @Column(name = "FirstName")
     private String firstname;
 
     @Column(name = "LastName")
     private String lastname;
-
+    @Column(name = "Email")
+    private String email;
     @Column(name = "Phone")
     private String phone;
 
     @Column(name = "Specialise")
     private String specialise;
 
-    @Column(name = "Clinic")
-    private Integer cid;
 
-    public Integer getId() { return id; }
+    public Long getId() { return id; }
 
-    public void setId(Integer id) { this.id = id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getFirstname() { return firstname; }
 
@@ -45,9 +44,10 @@ public class Doctor {
 
     public void setSpecialise(String specialise) { this.specialise = specialise; }
 
-    public Integer getClinicID() { return cid; }
+    public String getEmail() { return email; }
 
-    public void setClinicID(Integer clinicID) { this.cid = clinicID; }
+    public void setEmail(String email) { this.email = email; }
+
 
     @Override
     public String toString() {
@@ -55,6 +55,7 @@ public class Doctor {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
+                ", email ='" + email + '\'' +
                 ", phone=" + phone +
                 ", specialise='" + specialise + '\'' +
                 '}';
