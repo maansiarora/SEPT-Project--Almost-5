@@ -2,7 +2,7 @@ package com.example.nd_medicine.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name = "APPOINTMENTS")
@@ -17,17 +17,18 @@ public class Appointment {
     @Column
     private Long doctorId;
     @Column
-    private String appointmentTime;
+    private Date appointmentstartTime;
+    @Column
+    private Date appointmentendTime;
     @Column
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date appointmentDate;
-
 
     public Long getId() {
         return appointmentId;
     }
 
-    public void setId(Long id) {
+    public void setId(Long appointmentId) {
         this.appointmentId = appointmentId;
     }
 
@@ -54,15 +55,19 @@ public class Appointment {
     public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
-
-    public String getAppointmentTime() {
-        return appointmentTime;
+    public Date getStartTime() {
+        return appointmentstartTime;
+    }
+    public void setStartTime(Date appointmentstartTime) {
+        this.appointmentstartTime = appointmentstartTime;
+    }
+    public Date getEndTime() {
+        return appointmentendTime;
     }
 
-    public void setAppointmentTime(String appointmentTime) {
-        this.appointmentTime = appointmentTime;
+    public void setEndTime(Date appointmentendTime) {
+        this.appointmentendTime = appointmentendTime;
     }
-
     @Override
     public String toString() {
         return "Appointment{" +
@@ -70,7 +75,8 @@ public class Appointment {
                 ", patientId=" + patientId +
                 ", doctorId=" + doctorId +
                 ", appointmentDate=" + appointmentDate +
-                ", appointmentTime='" + appointmentTime + '\'' +
+                ", appointmentStartTime='" + appointmentstartTime + '\'' +
+                ", appointmentEndTime='" + appointmentendTime + '\'' +
                 '}';
     }
 }
