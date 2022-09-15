@@ -27,6 +27,7 @@ class MynewAppointment extends StatefulWidget {
 }
 
 String dropdownValue = 'Choose specialization';
+String message = '';
 
 class _MynewAppointment extends State<MynewAppointment> {
   @override
@@ -110,6 +111,7 @@ class _MynewAppointment extends State<MynewAppointment> {
                               setState(() {
                                 dropdownValue = newValue!;
                               });
+                              function();
                             },
                             items: <String>[
                               'Choose specialization',
@@ -125,9 +127,22 @@ class _MynewAppointment extends State<MynewAppointment> {
                                 ),
                               );
                             }).toList(),
-                          )))
+                          ))),
                 ],
-              ))
+              )),
+          Container(
+            height: 70,
+            padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
+            child: Text(message),
+          ),
         ]));
+  }
+
+  void function() {
+    String status;
+    if (dropdownValue == 'Dentist') {
+      status = 'Hi I am a Dentist';
+      setState(() => message = status);
+    }
   }
 }
