@@ -9,8 +9,9 @@ import 'pages/patientLogin.dart';
 import 'pages/adminLogin.dart';
 import 'pages/bookingMain.dart';
 import 'pages/newAppointment.dart';
+import 'pages/calender.dart';
 
-void main() => runApp(MaterialApp(initialRoute: '/bookingMain', routes: {
+void main() => runApp(MaterialApp(initialRoute: '/calender', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
       '/doctorSignUp': (context) => const doctorSignUp(),
       '/patientSignUp': (context) => const patientSignUp(),
@@ -21,4 +22,5 @@ void main() => runApp(MaterialApp(initialRoute: '/bookingMain', routes: {
       '/adminLogin': (context) => const adminLogin(),
       '/bookingMain': (context) => const bookingMain(),
       '/newAppointment': (context) => const newAppointment(),
+      '/calender': (context) => calender(),
     }));
