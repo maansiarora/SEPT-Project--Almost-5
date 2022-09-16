@@ -19,6 +19,16 @@ public class UserController {
     public Response signup(@RequestBody SignUpResponse signUpResponse){
         return userService.signup(signUpResponse);
     }
+
+    //trails
+    @PostMapping("/signup/doctor")
+    public Response signupDoctor(@RequestBody SignUpResponse signUpResponse){
+        return userService.signupDoctor(signUpResponse);
+    }
+    @PostMapping("/signup/patient")
+    public Response signupPatients(@RequestBody SignUpResponse signUpResponse){
+        return userService.signupPatient(signUpResponse);
+    }
     @PostMapping("/login")
     public LoginResponse login(@RequestBody Login login){
         return userService.logIn(login);
