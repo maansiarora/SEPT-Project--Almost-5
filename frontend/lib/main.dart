@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sept/pages/doctorsProfile.dart';
 import 'pages/doctorSignUp.dart';
 import 'pages/choiceLogin.dart';
 import 'pages/patientSignUp.dart';
@@ -10,8 +11,9 @@ import 'pages/adminLogin.dart';
 import 'pages/bookingMain.dart';
 import 'pages/newAppointment.dart';
 import 'pages/calender.dart';
+import 'pages/doctorsProfile.dart';
 
-void main() => runApp(MaterialApp(initialRoute: '/calender', routes: {
+void main() => runApp(MaterialApp(initialRoute: '/doctorsProfile', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
       '/doctorSignUp': (context) => const doctorSignUp(),
       '/patientSignUp': (context) => const patientSignUp(),
@@ -23,4 +25,5 @@ void main() => runApp(MaterialApp(initialRoute: '/calender', routes: {
       '/bookingMain': (context) => const bookingMain(),
       '/newAppointment': (context) => const newAppointment(),
       '/calender': (context) => calender(),
+      '/doctorsProfile': (context) => const doctorsProfile(),
     }));
