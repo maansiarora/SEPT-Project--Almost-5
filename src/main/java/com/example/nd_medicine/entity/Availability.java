@@ -8,7 +8,6 @@ import java.util.Date;
 public class Availability {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name = "TableID")
     private Long availId;
 
@@ -27,8 +26,7 @@ public class Availability {
     public Availability() {
     }
 
-    public Availability(Long availId, Long doctorId, Date startTime, Date endTime) {
-        this.availId = availId;
+    public Availability(Long doctorId, Date startTime, Date endTime) {
         this.doctorId = doctorId;
         this.startTime = startTime;
         this.endTime = endTime;
