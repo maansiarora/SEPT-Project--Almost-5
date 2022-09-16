@@ -14,7 +14,7 @@ import 'pages/calender.dart';
 import 'pages/doctorsProfile.dart';
 import 'pages/appointmentSummary.dart';
 
-void main() => runApp(MaterialApp(initialRoute: '/appointmentSummary', routes: {
+void main() => runApp(MaterialApp(initialRoute: '/newAppointment', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
       '/doctorSignUp': (context) => const doctorSignUp(),
       '/patientSignUp': (context) => const patientSignUp(),

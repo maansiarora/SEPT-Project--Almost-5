@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'loginSignUp.dart';
 
 void main() => runApp(const newAppointment());
 
@@ -131,20 +132,26 @@ class _MynewAppointment extends State<MynewAppointment> {
                 ],
               )),
           Container(
-            height: 300,
-            padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
-            child: ListView.builder(
-              itemCount: message.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  shape: const Border(
-                    bottom: BorderSide(width: 2.0, color: Colors.purple),
-                  ),
-                  title: Text('${message[index]}'),
-                );
-              },
-            ),
-          ),
+              height: 300,
+              padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
+              child: ListView.builder(
+                itemCount: message.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const loginSignUp()),
+                      );
+                    },
+                    shape: const Border(
+                      bottom: BorderSide(width: 2.0, color: Colors.purple),
+                    ),
+                    title: Text('${message[index]}'),
+                  );
+                },
+              )),
         ]));
   }
 
