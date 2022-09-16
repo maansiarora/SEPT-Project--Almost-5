@@ -17,7 +17,7 @@ public class AvailabilityController {
 
     //doctor adds availability
     @PostMapping(value = "/availability")
-    public Availability createBusyTime(@RequestBody Availability availability){
+    public Availability createAvailability(@RequestBody Availability availability){
         return availabilityService.saveDoctorAvailability(availability);
     }
 
