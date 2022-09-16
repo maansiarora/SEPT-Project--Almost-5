@@ -2,6 +2,9 @@ package com.example.nd_medicine.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
+import javax.swing.text.DateFormatter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -17,9 +20,9 @@ public class Appointment {
     @Column
     private Long doctorId;
     @Column
-    private Date appointmentstartTime;
+    private Date appointmentStartTime;
     @Column
-    private Date appointmentendTime;
+    private Date appointmentEndTime;
     @Column
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date appointmentDate;
@@ -48,25 +51,17 @@ public class Appointment {
         this.doctorId = doctorId;
     }
 
-    public Date getAppointmentDate() {
-        return appointmentDate;
-    }
-
-    public void setAppointmentDate(Date appointmentDate) {
-        this.appointmentDate = appointmentDate;
-    }
     public Date getStartTime() {
-        return appointmentstartTime;
+        return appointmentStartTime;
     }
-    public void setStartTime(Date appointmentstartTime) {
-        this.appointmentstartTime = appointmentstartTime;
+    public void setStartTime(Date appointmentStartTime) {
+        this.appointmentStartTime = appointmentStartTime;
     }
     public Date getEndTime() {
-        return appointmentendTime;
+        return appointmentEndTime;
     }
-
-    public void setEndTime(Date appointmentendTime) {
-        this.appointmentendTime = appointmentendTime;
+    public void setEndTime(Date appointmentEndTime) {
+        this.appointmentEndTime = appointmentEndTime;
     }
     @Override
     public String toString() {
@@ -75,8 +70,8 @@ public class Appointment {
                 ", patientId=" + patientId +
                 ", doctorId=" + doctorId +
                 ", appointmentDate=" + appointmentDate +
-                ", appointmentStartTime='" + appointmentstartTime + '\'' +
-                ", appointmentEndTime='" + appointmentendTime + '\'' +
+                ", appointmentStartTime='" + appointmentStartTime + '\'' +
+                ", appointmentEndTime='" + appointmentEndTime + '\'' +
                 '}';
     }
 }
