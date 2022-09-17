@@ -14,6 +14,7 @@ import 'pages/calender.dart';
 import 'pages/doctorsProfile.dart';
 import 'pages/appointmentSummary.dart';
 import 'pages/bookingConfirmation.dart';
+import 'pages/viewBooking.dart';
 
 void main() => runApp(MaterialApp(initialRoute: '/bookingMain', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
@@ -30,4 +31,5 @@ void main() => runApp(MaterialApp(initialRoute: '/bookingMain', routes: {
       '/doctorsProfile': (context) => const doctorsProfile(),
       '/appointmentSummary': (context) => const appointmentSummary(),
       '/bookingConfirmation': (context) => const bookingConfirmation(),
+      '/viewBooking': (context) => const viewBooking(),
     }));
