@@ -2,9 +2,7 @@ package com.example.nd_medicine.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
-import javax.swing.text.DateFormatter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -15,14 +13,25 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long appointmentId;
+//    @Column
+//    private Long patientId;
+//    @Column
+//    private Long doctorId;
+
+    @OneToOne(targetEntity = Doctor.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "DocID")
+    private Doctor doctor;
+
+    @OneToOne(targetEntity = Patient.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "patientId")
+    private Patient patient;
+
+
+
     @Column
-    private Long patientId;
-    @Column
-    private Long doctorId;
-    @Column
-    private Date appointmentStartTime;
-    @Column
-    private Date appointmentEndTime;
+    private LocalTime time;
+//    @Column
+//    private Date appointmentEndTime;
     @Column
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date appointmentDate;
@@ -35,43 +44,67 @@ public class Appointment {
         this.appointmentId = appointmentId;
     }
 
-    public Long getPatientId() {
-        return patientId;
+//    public Long getPatientId() {
+//        return patientId;
+//    }
+//
+//    public void setPatientId(Long patientId) {
+//        this.patientId = patientId;
+//    }
+//
+//    public Long getDoctorId() {
+//        return doctorId;
+//    }
+//
+//    public void setDoctorId(Long doctorId) {
+//        this.doctorId = doctorId;
+//    }
+
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setPatientId(Long patientId) {
-        this.patientId = patientId;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
-    public Long getDoctorId() {
-        return doctorId;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public Date getStartTime() {
-        return appointmentStartTime;
+    public Appointment() {
     }
-    public void setStartTime(Date appointmentStartTime) {
-        this.appointmentStartTime = appointmentStartTime;
+
+    public Appointment(LocalTime time, Date appointmentDate) {
+        this.time = time;
+        this.appointmentDate = appointmentDate;
     }
-    public Date getEndTime() {
-        return appointmentEndTime;
+
+    public LocalTime getTime() {
+        return time;
     }
-    public void setEndTime(Date appointmentEndTime) {
-        this.appointmentEndTime = appointmentEndTime;
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
+//    public Date getEndTime() {
+//        return appointmentEndTime;
+//    }
+//    public void setEndTime(Date appointmentEndTime) {
+//        this.appointmentEndTime = appointmentEndTime;
+//    }
     @Override
     public String toString() {
         return "Appointment{" +
                 "appointmentId=" + appointmentId +
-                ", patientId=" + patientId +
-                ", doctorId=" + doctorId +
+                ", patientId=" + patient +
+                ", doctorId=" + doctor +
                 ", appointmentDate=" + appointmentDate +
-                ", appointmentStartTime='" + appointmentStartTime + '\'' +
-                ", appointmentEndTime='" + appointmentEndTime + '\'' +
+                ", appointmentStartTime='" + time + '\'' +
+//                ", appointmentEndTime='" + appointmentEndTime + '\'' +
                 '}';
     }
 }

@@ -41,7 +41,7 @@ public class AvailabilityService {
 
     public Availability saveDoctorAvailability(Availability availability) {
 
-        slotService.initiateSlotsIntoDb();
+        slotService.initiateSlotsIntoDb(availability.getDoctor(),availability.getStartTime(),availability.getEndTime());
 
         return availabilityRepository.save(availability);
 
@@ -54,9 +54,9 @@ public class AvailabilityService {
 
 
 
-    @Transactional
-    public Slot testing() {
-        slotService.initiateSlotsIntoDb();
-        return null;
-    }
+//    @Transactional
+//    public Slot testing() {
+//        slotService.initiateSlotsIntoDb();
+//        return null;
+//    }
 }

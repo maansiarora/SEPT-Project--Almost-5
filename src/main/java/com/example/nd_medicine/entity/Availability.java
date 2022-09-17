@@ -1,6 +1,7 @@
 package com.example.nd_medicine.entity;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -11,14 +12,26 @@ public class Availability {
     @Column(name = "TableID")
     private Long availId;
 
-    @Column(name = "DocID")
-    private Long doctorId;
+//    @Column(name = "DocID")
+//    private Long doctorId;
+
+    @OneToOne(targetEntity = Doctor.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "DocID")
+    private Doctor doctor;
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     @Column(name = "AvailableFrom")
-    private Date startTime;
+    private LocalTime startTime;
 
     @Column(name = "AvailableTo")
-    private Date endTime;
+    private LocalTime endTime;
 
 //    @Column(name = "Booked")
 //    private Boolean booked;
@@ -26,8 +39,7 @@ public class Availability {
     public Availability() {
     }
 
-    public Availability(Long doctorId, Date startTime, Date endTime) {
-        this.doctorId = doctorId;
+    public Availability(LocalTime startTime, LocalTime endTime) {
         this.startTime = startTime;
         this.endTime = endTime;
     }
@@ -40,27 +52,27 @@ public class Availability {
         this.availId = id;
     }
 
-    public Long getDoctorId() {
-        return doctorId;
-    }
+//    public Long getDoctorId() {
+//        return doctorId;
+//    }
+//
+//    public void setDoctorId(Long doctorId) {
+//        this.doctorId = doctorId;
+//    }
 
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    public Date getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 ///to do booked boolean
@@ -76,7 +88,7 @@ public class Availability {
     public String toString() {
         return "AvailabilityTime{" +
                 "availid=" + availId +
-                ", doctorId=" + doctorId +
+                ", doctorId=" + doctor +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 '}';

@@ -1,7 +1,12 @@
 package com.example.nd_medicine.controller;
 
 import com.example.nd_medicine.entity.Appointment;
+import com.example.nd_medicine.entity.Doctor;
+import com.example.nd_medicine.entity.Patient;
+import com.example.nd_medicine.repository.DoctorRepository;
+import com.example.nd_medicine.repository.PatientRepository;
 import com.example.nd_medicine.service.AppointmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +17,13 @@ public class AppointmentController {
 
     private final AppointmentService appointmentService;
 
+    @Autowired
+    DoctorRepository doctorRepository;
+
+    @Autowired
+    PatientRepository patientRepository;
+
+
     public AppointmentController(AppointmentService appointmentService) {
         this.appointmentService = appointmentService;
     }
@@ -19,6 +31,26 @@ public class AppointmentController {
     //new appointment request
     @PostMapping("/createAppointment")
     public Appointment createAppointment(@RequestBody Appointment newAppointment) {
+
+        // needs to be updated to pull the time from the selected available time// front end work as well
+
+
+        //doctor and patient need to be pulled from the current user.
+
+
+        Doctor doctorTest = new Doctor("saiDoc", "kannan", "sai@gmail");
+        Patient patienttest = new Patient("saiPatient", "kannan", "sai@gmail");
+
+        doctorRepository.save(doctorTest);
+        patientRepository.save(patienttest);
+
+
+
+        newAppointment.setDoctor(doctorTest);
+        newAppointment.setPatient(patienttest);
+//        newAppointment.
+
+
         return appointmentService.create(newAppointment);
 
     }
