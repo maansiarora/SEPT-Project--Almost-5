@@ -23,9 +23,6 @@ public class Appointment {
     private Date appointmentStartTime;
     @Column
     private Date appointmentEndTime;
-    @Column
-    @JsonFormat(pattern="dd-MM-yyyy")
-    private Date appointmentDate;
 
     public Long getId() {
         return appointmentId;
@@ -69,9 +66,18 @@ public class Appointment {
                 "appointmentId=" + appointmentId +
                 ", patientId=" + patientId +
                 ", doctorId=" + doctorId +
-                ", appointmentDate=" + appointmentDate +
                 ", appointmentStartTime='" + appointmentStartTime + '\'' +
                 ", appointmentEndTime='" + appointmentEndTime + '\'' +
                 '}';
+    }
+
+    public void resetObject() {
+
+        this.appointmentId = null;
+        this.patientId = null;
+        this.doctorId = null;
+        this.appointmentStartTime = null;
+        this.appointmentEndTime = null;
+
     }
 }
