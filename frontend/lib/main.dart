@@ -13,8 +13,9 @@ import 'pages/newAppointment.dart';
 import 'pages/calender.dart';
 import 'pages/doctorsProfile.dart';
 import 'pages/appointmentSummary.dart';
+import 'pages/bookingConfirmation.dart';
 
-void main() => runApp(MaterialApp(initialRoute: '/newAppointment', routes: {
+void main() => runApp(MaterialApp(initialRoute: '/bookingMain', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
       '/doctorSignUp': (context) => const doctorSignUp(),
       '/patientSignUp': (context) => const patientSignUp(),
@@ -28,4 +29,5 @@ void main() => runApp(MaterialApp(initialRoute: '/newAppointment', routes: {
       '/calender': (context) => calender(),
       '/doctorsProfile': (context) => const doctorsProfile(),
       '/appointmentSummary': (context) => const appointmentSummary(),
+      '/bookingConfirmation': (context) => const bookingConfirmation(),
     }));

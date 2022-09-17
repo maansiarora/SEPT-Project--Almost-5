@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'calender.dart';
+import 'package:sept/pages/bookingConfirmation.dart';
+import 'package:sept/pages/newAppointment.dart';
+import 'bookingConfirmation.dart';
+import 'newAppointment.dart';
 
 void main() => runApp(const appointmentSummary());
 
@@ -130,7 +133,8 @@ class _MyappointmentSummary extends State<MyappointmentSummary> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => calender()),
+                          MaterialPageRoute(
+                              builder: (context) => const newAppointment()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -152,7 +156,9 @@ class _MyappointmentSummary extends State<MyappointmentSummary> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => calender()),
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const bookingConfirmation()),
                         );
                       },
                       style: ElevatedButton.styleFrom(

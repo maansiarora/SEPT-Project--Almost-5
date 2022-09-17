@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:sept/pages/appointmentSummary.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'appointmentSummary.dart';
 
 void main() {
   initializeDateFormatting().then((_) => runApp(calender()));
@@ -96,6 +98,13 @@ class _TableBasicsExampleState extends State {
               itemCount: appointment.length,
               itemBuilder: (context, index) {
                 return ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => appointmentSummary()),
+                    );
+                  },
                   shape: const Border(
                     bottom: BorderSide(width: 2.0, color: Colors.purple),
                   ),
