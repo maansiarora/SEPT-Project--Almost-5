@@ -42,6 +42,23 @@ class _TextScreenState extends State<TextScreen> {
       initialDate: selectedDate,
       firstDate: DateTime(2000),
       lastDate: DateTime(2025),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.deepPurpleAccent,
+              onPrimary: Colors.white,
+              onSurface: Colors.black,
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.deepPurpleAccent, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
     if (selected != null && selected != selectedDate) {
       setState(() {
@@ -56,6 +73,23 @@ class _TextScreenState extends State<TextScreen> {
     final selected = await showTimePicker(
       context: context,
       initialTime: selectedTime,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.deepPurpleAccent,
+              onPrimary: Colors.white,
+              onSurface: Colors.black,
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.deepPurpleAccent, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
     if (selected != null && selected != selectedTime) {
       setState(() {
@@ -70,6 +104,23 @@ class _TextScreenState extends State<TextScreen> {
     final selected = await showTimePicker(
       context: context,
       initialTime: selectedTime2,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.deepPurpleAccent,
+              onPrimary: Colors.white,
+              onSurface: Colors.black,
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.deepPurpleAccent, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
     if (selected != null && selected != selectedTime2) {
       setState(() {
