@@ -30,7 +30,7 @@ class newAppointment extends StatelessWidget {
                 ),
           ),
         ),
-        body: MynewAppointment(),
+        body: const Scrollbar(child: MynewAppointment()),
       ),
     );
   }

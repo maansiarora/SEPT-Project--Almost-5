@@ -33,7 +33,7 @@ class appointmentSummary extends StatelessWidget {
                 ),
           ),
         ),
-        body: MyappointmentSummary(),
+        body: const Scrollbar(child: MyappointmentSummary()),
       ),
     );
   }

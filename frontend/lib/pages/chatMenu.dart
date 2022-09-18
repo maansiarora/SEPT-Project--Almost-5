@@ -15,7 +15,7 @@ class _chatMenuState extends State<chatMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chats",
+        title: const Text("Chats",
             style: TextStyle(
                 color: Colors.deepPurple, fontWeight: FontWeight.w600)),
         backgroundColor: Colors.transparent,
@@ -33,8 +33,9 @@ class _chatMenuState extends State<chatMenu> {
               ),
         ),
       ),
-      body: SingleChildScrollView(
-          child: Column(
+      body: Scrollbar(
+          child: SingleChildScrollView(
+              child: Column(
         children: <Widget>[
           const SizedBox(
               //height: 20,
@@ -156,7 +157,7 @@ class _chatMenuState extends State<chatMenu> {
                 );
               }),
         ],
-      )),
+      ))),
     );
   }
 }

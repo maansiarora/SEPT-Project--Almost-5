@@ -15,7 +15,7 @@ class loginSignUp extends StatelessWidget {
       //title: _title,
       home: Scaffold(
         //appBar: AppBar(title: const Text(_title)),
-        body: MyloginSignUp(),
+        body: Scrollbar(child: MyloginSignUp()),
       ),
     );
   }

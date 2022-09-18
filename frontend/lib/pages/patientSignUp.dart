@@ -32,7 +32,7 @@ class patientSignUp extends StatelessWidget {
                 ),
           ),
         ),
-        body: MypatientSignUp(),
+        body: const Scrollbar(child: MypatientSignUp()),
       ),
     );
   }

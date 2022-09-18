@@ -31,7 +31,7 @@ class doctorLogin extends StatelessWidget {
                 ),
           ),
         ),
-        body: MydoctorLogin(),
+        body: const Scrollbar(child: MydoctorLogin()),
       ),
     );
   }

@@ -13,7 +13,8 @@ class chatContact extends StatefulWidget {
 class _chatContactState extends State<chatContact> {
   _chatBubble(messageExchange message, bool isMe) {
     if (!isMe) {
-      return Column(
+      return Scrollbar(
+          child: Column(
         children: <Widget>[
           Column(
             children: [
@@ -62,9 +63,10 @@ class _chatContactState extends State<chatContact> {
             ],
           )
         ],
-      );
+      ));
     } else {
-      return Column(
+      return Scrollbar(
+          child: Column(
         children: <Widget>[
           Column(
             children: [
@@ -109,7 +111,7 @@ class _chatContactState extends State<chatContact> {
             ],
           )
         ],
-      );
+      ));
     }
   }
 

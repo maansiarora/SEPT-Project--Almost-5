@@ -15,7 +15,7 @@ class bookingConfirmation extends StatelessWidget {
       //title: _title,
       home: Scaffold(
         //appBar: AppBar(title: const Text(_title)),
-        body: MybookingConfirmation(),
+        body: Scrollbar(child: MybookingConfirmation()),
       ),
     );
   }

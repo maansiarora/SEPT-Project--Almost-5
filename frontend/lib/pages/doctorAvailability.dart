@@ -177,7 +177,8 @@ class _TextScreenState extends State<TextScreen> {
               ),
         ),
       ),
-      body: Center(
+      body: Scrollbar(
+          child: Center(
         child: Form(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -293,7 +294,7 @@ class _TextScreenState extends State<TextScreen> {
                 )),
           ],
         )),
-      ),
+      )),
     );
   }
 }

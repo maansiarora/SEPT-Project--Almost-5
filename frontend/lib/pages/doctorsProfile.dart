@@ -31,7 +31,7 @@ class doctorsProfile extends StatelessWidget {
                 ),
           ),
         ),
-        body: MydoctorsProfile(),
+        body: const Scrollbar(child: MydoctorsProfile()),
       ),
     );
   }

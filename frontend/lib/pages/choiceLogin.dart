@@ -33,7 +33,7 @@ class choiceLogin extends StatelessWidget {
                 ),
           ),
         ),
-        body: MychoiceLogin(),
+        body: const Scrollbar(child: MychoiceLogin()),
       ),
     );
   }

@@ -14,7 +14,7 @@ class viewBooking extends StatelessWidget {
       //title: _title,
       home: Scaffold(
         //appBar: AppBar(title: const Text(_title)),
-        body: MyviewBooking(),
+        body: Scrollbar(child: MyviewBooking()),
       ),
     );
   }

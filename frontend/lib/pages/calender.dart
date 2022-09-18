@@ -47,10 +47,11 @@ class _TableBasicsExampleState extends State {
                 ),
           ),
         ),
-        body: SingleChildScrollView(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+        body: Scrollbar(
+            child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
               const Padding(
                 padding: EdgeInsets.fromLTRB(30, 70, 30, 5),
               ),
@@ -63,15 +64,6 @@ class _TableBasicsExampleState extends State {
                   fontWeight: FontWeight.w500,
                 ),
               )),
-              /*const Center(
-              child: Text(
-            'Availability',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w300,
-            ),
-          )),*/
               const Padding(
                   padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
                   child: Divider(
@@ -130,7 +122,7 @@ class _TableBasicsExampleState extends State {
                   },
                 ),
               )
-            ])));
+            ]))));
   }
 
   void func(day) {

@@ -15,7 +15,7 @@ class patientDashboard extends StatelessWidget {
       //title: _title,
       home: Scaffold(
         //appBar: AppBar(title: const Text(_title)),
-        body: MypatientDashboard(),
+        body: Scrollbar(child: MypatientDashboard()),
       ),
     );
   }

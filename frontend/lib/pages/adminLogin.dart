@@ -30,7 +30,7 @@ class adminLogin extends StatelessWidget {
                 ),
           ),
         ),
-        body: MyadminLogin(),
+        body: const Scrollbar(child: MyadminLogin()),
       ),
     );
   }

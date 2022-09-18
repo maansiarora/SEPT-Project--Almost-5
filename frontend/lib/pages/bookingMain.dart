@@ -31,7 +31,7 @@ class bookingMain extends StatelessWidget {
                 ),
           ),
         ),
-        body: MybookingMain(),
+        body: const Scrollbar(child: MybookingMain()),
       ),
     );
   }
