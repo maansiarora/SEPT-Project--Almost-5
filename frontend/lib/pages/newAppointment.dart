@@ -162,7 +162,7 @@ class _MynewAppointment extends State<MynewAppointment> {
                       );
                     },
                     shape: const Border(
-                      bottom: BorderSide(width: 2.0, color: Colors.purple),
+                      bottom: BorderSide(width: 0.5, color: Colors.black),
                     ),
                     title: Text('${message[index]}'),
                   );
