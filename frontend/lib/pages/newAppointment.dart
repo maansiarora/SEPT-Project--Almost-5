@@ -54,7 +54,7 @@ class _MynewAppointment extends State<MynewAppointment> {
         child: ListView(children: <Widget>[
           Container(
               alignment: Alignment.center,
-              padding: const EdgeInsets.fromLTRB(30, 100, 30, 35),
+              padding: const EdgeInsets.fromLTRB(30, 30, 30, 35),
               child: const Text(
                 'New Appointment',
                 textAlign: TextAlign.center,
@@ -174,10 +174,10 @@ class _MynewAppointment extends State<MynewAppointment> {
   void function() {
     List<String> status;
     if (dropdownValue == 'Dentist') {
-      status = ['Hi', 'Hello', 'Salut'];
+      status = ['Dr. Dentist 1', 'Dr. Dentist 2', 'Dr. Dentist 3'];
       setState(() => message = status);
     } else if (dropdownValue == 'General Practitioner') {
-      status = ['Hey', 'WhatsUp', 'Cool'];
+      status = ['Dr. GP 1', 'Dr. GP 2', 'Dr. GP 3'];
       setState(() => message = status);
     } else if (dropdownValue == 'Choose specialization') {
       status = ['Please Select Specialization'];

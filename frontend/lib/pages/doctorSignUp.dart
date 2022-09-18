@@ -54,6 +54,7 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
   get kPrimaryColor => null;
 
   bool _passwordVisible = true;
+  String dropdownValue = 'Choose specialization';
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -63,7 +64,7 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
             children: [
               Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.fromLTRB(30, 100, 30, 30),
+                  padding: const EdgeInsets.fromLTRB(30, 20, 30, 10),
                   child: const Text(
                     'Sign Up as a Doctor',
                     textAlign: TextAlign.center,
@@ -184,8 +185,59 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                 ),
               ),
               Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.fromLTRB(40, 30, 40, 0),
+                  child: Row(
+                    children: [
+                      Flexible(
+                          flex: 1,
+                          child: Material(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(60),
+                              elevation: 5.0,
+                              shadowColor: Colors.grey,
+                              child: DropdownButtonFormField(
+                                decoration: InputDecoration(
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(60),
+                                        borderSide: BorderSide.none),
+                                    prefixIcon: const Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: Icon(
+                                        Icons.menu,
+                                        color: Colors.deepPurple,
+                                      ),
+                                    )),
+                                dropdownColor: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                value: dropdownValue,
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    dropdownValue = newValue!;
+                                  });
+                                },
+                                items: <String>[
+                                  'Choose specialization',
+                                  'General Practitioner',
+                                  'Dentist'
+                                ].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.black54),
+                                    ),
+                                  );
+                                }).toList(),
+                              ))),
+                    ],
+                  )),
+              Container(
                   height: 100,
-                  padding: const EdgeInsets.fromLTRB(30, 60, 30, 0),
+                  padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(

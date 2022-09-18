@@ -58,7 +58,7 @@ class _MyappointmentSummary extends State<MyappointmentSummary> {
           children: <Widget>[
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(30, 150, 30, 70),
+                padding: const EdgeInsets.fromLTRB(30, 50, 30, 70),
                 child: const Text(
                   'Please confirm your booking details',
                   textAlign: TextAlign.center,

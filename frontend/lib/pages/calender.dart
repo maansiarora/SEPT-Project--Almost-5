@@ -53,7 +53,7 @@ class _TableBasicsExampleState extends State {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
               const Padding(
-                padding: EdgeInsets.fromLTRB(30, 70, 30, 5),
+                padding: EdgeInsets.fromLTRB(30, 20, 30, 5),
               ),
               const Center(
                   child: Text(

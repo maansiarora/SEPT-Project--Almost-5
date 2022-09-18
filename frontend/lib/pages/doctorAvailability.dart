@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'doctorDashboard.dart';
-import 'chatMenu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -186,7 +185,7 @@ class _TextScreenState extends State<TextScreen> {
           children: [
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
+                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                 child: const Text(
                   'Set Availabilities',
                   textAlign: TextAlign.center,

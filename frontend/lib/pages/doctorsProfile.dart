@@ -56,7 +56,7 @@ class _MydoctorsProfile extends State<MydoctorsProfile> {
           children: <Widget>[
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(30, 80, 30, 10),
+                padding: const EdgeInsets.fromLTRB(30, 20, 30, 10),
                 child: const Text(
                   'Dr Dummy Name',
                   textAlign: TextAlign.center,
