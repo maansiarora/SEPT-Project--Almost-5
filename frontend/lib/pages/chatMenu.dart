@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'chat.dart';
-
 import 'messages.dart';
 
 class chatMenu extends StatefulWidget {
@@ -28,11 +27,12 @@ class _chatMenuState extends State<chatMenu> {
                 SizedBox(
                   height: 20,
                 ),
-                Text("Chat",
+                Text("Chats",
                     style: TextStyle(
-                        color: Color(0xff2B8D78),
-                        fontSize: 25,
-                        fontFamily: 'PoppinsBold')),
+                      color: Colors.deepPurple,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w600,
+                    )),
               ],
             ),
           ),
@@ -76,37 +76,12 @@ class _chatMenuState extends State<chatMenu> {
                       Column(
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 15,
-                            ),
+                            padding: const EdgeInsets.fromLTRB(20, 13, 20, 0),
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(40),
-                                      ),
-                                      border: Border.all(
-                                          width: 2,
-                                          color:
-                                              Theme.of(context).primaryColor),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 2,
-                                          blurRadius: 5,
-                                        )
-                                      ]),
-                                  child: CircleAvatar(
-                                    radius: 35,
-                                    backgroundImage:
-                                        AssetImage(chat.sender.imageUrl),
-                                  ),
-                                ),
-                                Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.65,
+                                      MediaQuery.of(context).size.width * 0.85,
                                   padding: const EdgeInsets.only(left: 20),
                                   child: Column(
                                     children: [
@@ -117,8 +92,8 @@ class _chatMenuState extends State<chatMenu> {
                                           Text(
                                             chat.sender.name,
                                             style: const TextStyle(
-                                                fontSize: 15,
-                                                fontFamily: "PoppinsSemiBold"),
+                                              fontSize: 15,
+                                            ),
                                           ),
                                           Text(
                                             chat.time,
@@ -141,10 +116,16 @@ class _chatMenuState extends State<chatMenu> {
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 2,
                                         ),
-                                      )
+                                      ),
+                                      const Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                          child: Divider(
+                                            color: Colors.black26,
+                                          )),
                                     ],
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),

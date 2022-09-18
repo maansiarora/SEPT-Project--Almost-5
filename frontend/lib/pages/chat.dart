@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'messages.dart';
-
 import 'users.dart';
 
 class chatContact extends StatefulWidget {
@@ -20,21 +19,6 @@ class _chatContactState extends State<chatContact> {
             children: [
               Row(
                 children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.only(top: 10),
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 10,
-                      )
-                    ]),
-                    child: CircleAvatar(
-                      radius: 15,
-                      backgroundImage: AssetImage(message.sender.imageUrl),
-                    ),
-                  ),
                   Container(
                     child: Container(
                       alignment: Alignment.topLeft,
@@ -57,19 +41,20 @@ class _chatContactState extends State<chatContact> {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 10,
-                              offset: Offset(0, 3),
+                              offset: const Offset(0, 3),
                             )
                           ]),
                       child: Text(
                         message.text,
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                       ),
                     ),
                   ),
                   Container(
                     child: Text(
                       message.time,
-                      style: TextStyle(fontSize: 11, color: Colors.black54),
+                      style:
+                          const TextStyle(fontSize: 11, color: Colors.black54),
                     ),
                   )
                 ],
@@ -87,21 +72,6 @@ class _chatContactState extends State<chatContact> {
                 textDirection: TextDirection.rtl,
                 children: <Widget>[
                   Container(
-                    padding: const EdgeInsets.only(top: 10),
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 10,
-                      )
-                    ]),
-                    child: CircleAvatar(
-                      radius: 15,
-                      backgroundImage: AssetImage(message.sender.imageUrl),
-                    ),
-                  ),
-                  Container(
                     alignment: Alignment.topRight,
                     constraints: BoxConstraints(
                       maxWidth: MediaQuery.of(context).size.width * 0.5,
@@ -110,7 +80,7 @@ class _chatContactState extends State<chatContact> {
                     margin: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),
                     decoration: BoxDecoration(
-                        color: const Color(0xff38B69A),
+                        color: Colors.deepPurple,
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(20.0),
                           topRight: Radius.circular(20.0),
@@ -122,7 +92,7 @@ class _chatContactState extends State<chatContact> {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 10,
-                            offset: Offset(0, 3),
+                            offset: const Offset(0, 3),
                           )
                         ]),
                     child: Text(
@@ -132,7 +102,7 @@ class _chatContactState extends State<chatContact> {
                   ),
                   Text(
                     message.time,
-                    style: TextStyle(fontSize: 11, color: Colors.black54),
+                    style: const TextStyle(fontSize: 11, color: Colors.black54),
                   )
                 ],
               ),
@@ -145,16 +115,16 @@ class _chatContactState extends State<chatContact> {
 
   _sendMessageArea() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       height: 70,
       color: Colors.white,
       child: Row(
         children: <Widget>[
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.photo),
+            icon: const Icon(Icons.attach_file),
             iconSize: 25,
-            color: Theme.of(context).primaryColor,
+            color: Colors.deepPurple,
           ),
           const Expanded(
             child: TextField(
@@ -164,9 +134,9 @@ class _chatContactState extends State<chatContact> {
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.send),
+            icon: const Icon(Icons.send),
             iconSize: 25,
-            color: Theme.of(context).primaryColor,
+            color: Colors.deepPurple,
           )
         ],
       ),
@@ -178,9 +148,9 @@ class _chatContactState extends State<chatContact> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: Colors.deepPurple,
         title: Text(
           widget.user.name,
-          style: const TextStyle(fontFamily: "PoppinsBold"),
         ),
       ),
       body: Column(
@@ -188,7 +158,7 @@ class _chatContactState extends State<chatContact> {
           Expanded(
             child: ListView.builder(
               reverse: true,
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               itemCount: messages.length,
               itemBuilder: (BuildContext context, int index) {
                 final messageExchange message = messages[index];
