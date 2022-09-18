@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sept/pages/adminLogin.dart';
+import 'loginSignUp.dart';
 import 'patientLogin.dart';
 import 'doctorLogin.dart';
 import 'adminLogin.dart';
@@ -13,10 +14,25 @@ class choiceLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       //title: _title,
       home: Scaffold(
-        //appBar: AppBar(title: const Text(_title)),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          bottomOpacity: 0.0,
+          elevation: 0.0,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => loginSignUp()),
+              );
+            },
+            child: const Icon(Icons.arrow_back, color: Colors.black
+                // add custom icons also
+                ),
+          ),
+        ),
         body: MychoiceLogin(),
       ),
     );

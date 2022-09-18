@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'doctorDashboard.dart';
 import 'chat.dart';
 import 'messages.dart';
 
@@ -13,31 +14,50 @@ class _chatMenuState extends State<chatMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Chats",
+            style: TextStyle(
+                color: Colors.deepPurple, fontWeight: FontWeight.w600)),
+        backgroundColor: Colors.transparent,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => doctorDashboard()),
+            );
+          },
+          child: const Icon(Icons.arrow_back, color: Colors.black
+              // add custom icons also
+              ),
+        ),
+      ),
       body: SingleChildScrollView(
           child: Column(
         children: <Widget>[
           const SizedBox(
-            height: 20,
-          ),
+              //height: 20,
+              ),
           Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: const <Widget>[
                 SizedBox(
-                  height: 20,
-                ),
-                Text("Chats",
+                    //height: 20,
+                    ),
+                /*Text("Chats",
                     style: TextStyle(
                       color: Colors.deepPurple,
                       fontSize: 25,
                       fontWeight: FontWeight.w600,
-                    )),
+                    )),*/
               ],
             ),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
             child: Material(
               elevation: 10.0,
               shadowColor: Colors.black45,

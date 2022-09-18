@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:sept/pages/appointmentSummary.dart';
+import 'package:sept/pages/doctorsProfile.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'appointmentSummary.dart';
 
@@ -30,23 +31,39 @@ class _TableBasicsExampleState extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          bottomOpacity: 0.0,
+          elevation: 0.0,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => doctorsProfile()),
+              );
+            },
+            child: const Icon(Icons.arrow_back, color: Colors.black
+                // add custom icons also
+                ),
+          ),
+        ),
         body: SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.fromLTRB(30, 70, 30, 5),
-          ),
-          const Center(
-              child: Text(
-            'Doctor Name',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-          )),
-          /*const Center(
+              const Padding(
+                padding: EdgeInsets.fromLTRB(30, 70, 30, 5),
+              ),
+              const Center(
+                  child: Text(
+                'Doctor Name',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              )),
+              /*const Center(
               child: Text(
             'Availability',
             textAlign: TextAlign.center,
@@ -55,65 +72,65 @@ class _TableBasicsExampleState extends State {
               fontWeight: FontWeight.w300,
             ),
           )),*/
-          const Padding(
-              padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
-              child: Divider(
-                color: Colors.grey,
-              )),
-          Padding(
-              padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-              child: TableCalendar(
-                firstDay: DateTime.utc(2010, 10, 20),
-                lastDay: DateTime.utc(2040, 10, 20),
-                focusedDay: _focusedDay,
-                calendarFormat: _calendarFormat,
-                selectedDayPredicate: (day) {
-                  return isSameDay(_selectedDay, day);
-                },
-                onDaySelected: (selectedDay, focusedDay) {
-                  if (!isSameDay(_selectedDay, selectedDay)) {
-                    setState(() {
-                      _selectedDay = selectedDay;
+              const Padding(
+                  padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
+                  child: Divider(
+                    color: Colors.grey,
+                  )),
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  child: TableCalendar(
+                    firstDay: DateTime.utc(2010, 10, 20),
+                    lastDay: DateTime.utc(2040, 10, 20),
+                    focusedDay: _focusedDay,
+                    calendarFormat: _calendarFormat,
+                    selectedDayPredicate: (day) {
+                      return isSameDay(_selectedDay, day);
+                    },
+                    onDaySelected: (selectedDay, focusedDay) {
+                      if (!isSameDay(_selectedDay, selectedDay)) {
+                        setState(() {
+                          _selectedDay = selectedDay;
+                          _focusedDay = focusedDay;
+                          func(_selectedDay);
+                        });
+                      }
+                    },
+                    onFormatChanged: (format) {
+                      if (_calendarFormat != format) {
+                        setState(() {
+                          _calendarFormat = format;
+                        });
+                      }
+                    },
+                    onPageChanged: (focusedDay) {
                       _focusedDay = focusedDay;
-                      func(_selectedDay);
-                    });
-                  }
-                },
-                onFormatChanged: (format) {
-                  if (_calendarFormat != format) {
-                    setState(() {
-                      _calendarFormat = format;
-                    });
-                  }
-                },
-                onPageChanged: (focusedDay) {
-                  _focusedDay = focusedDay;
-                },
-              )),
-          Container(
-            height: 200,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-            child: ListView.builder(
-              itemCount: appointment.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => appointmentSummary()),
+                    },
+                  )),
+              Container(
+                height: 200,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                child: ListView.builder(
+                  itemCount: appointment.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => appointmentSummary()),
+                        );
+                      },
+                      shape: const Border(
+                        bottom: BorderSide(width: 2.0, color: Colors.purple),
+                      ),
+                      title: Text('${appointment[index]}'),
                     );
                   },
-                  shape: const Border(
-                    bottom: BorderSide(width: 2.0, color: Colors.purple),
-                  ),
-                  title: Text('${appointment[index]}'),
-                );
-              },
-            ),
-          )
-        ])));
+                ),
+              )
+            ])));
   }
 
   void func(day) {

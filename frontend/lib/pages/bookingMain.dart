@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sept/pages/viewBooking.dart';
+import 'viewBooking.dart';
 import 'newAppointment.dart';
+import 'patientDashboard.dart';
 
 void main() => runApp(const bookingMain());
 
@@ -11,10 +12,25 @@ class bookingMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       //title: _title,
       home: Scaffold(
-        //appBar: AppBar(title: const Text(_title)),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          bottomOpacity: 0.0,
+          elevation: 0.0,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => patientDashboard()),
+              );
+            },
+            child: const Icon(Icons.arrow_back, color: Colors.black
+                // add custom icons also
+                ),
+          ),
+        ),
         body: MybookingMain(),
       ),
     );

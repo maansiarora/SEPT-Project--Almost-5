@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'doctorDashboard.dart';
 import 'chatMenu.dart';
 
 void main() {
@@ -160,6 +161,22 @@ class _TextScreenState extends State<TextScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => doctorDashboard()),
+            );
+          },
+          child: const Icon(Icons.arrow_back, color: Colors.black
+              // add custom icons also
+              ),
+        ),
+      ),
       body: Center(
         child: Form(
             child: Column(
