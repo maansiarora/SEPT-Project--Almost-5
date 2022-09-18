@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'calender.dart';
+import 'doctorsProfile.dart';
 
 void main() => runApp(const newAppointment());
 
@@ -141,7 +141,8 @@ class _MynewAppointment extends State<MynewAppointment> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => calender()),
+                        MaterialPageRoute(
+                            builder: (context) => const doctorsProfile()),
                       );
                     },
                     shape: const Border(

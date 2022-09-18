@@ -262,12 +262,7 @@ class _TextScreenState extends State<TextScreen> {
                 //height: 70,
                 padding: const EdgeInsets.fromLTRB(260, 50, 30, 0),
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const chatMenu()),
-                    );
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'choiceSignup.dart';
-import 'choiceLogin.dart';
+import 'doctorDashboard.dart';
 
 void main() => runApp(const doctorLogin());
 
@@ -119,7 +119,13 @@ class _MydoctorLogin extends State<MydoctorLogin> {
                   height: 140,
                   padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const doctorDashboard()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),

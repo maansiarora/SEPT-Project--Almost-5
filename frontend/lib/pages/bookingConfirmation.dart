@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'patientDashboard.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'loginSignUp.dart';
 
 void main() => runApp(const bookingConfirmation());
 
@@ -37,7 +37,7 @@ class _MybookingConfirmation extends State<MybookingConfirmation> {
     return MaterialApp(
         home: SplashScreen(
             seconds: 6,
-            navigateAfterSeconds: const loginSignUp(),
+            navigateAfterSeconds: const patientDashboard(),
             title: const Text(
               'Booking Confirmed!',
               style: TextStyle(
