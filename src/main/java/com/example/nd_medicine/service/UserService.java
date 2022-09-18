@@ -169,8 +169,6 @@ public class UserService {
 
         System.out.println(encryptedpassword);
 
-
-
         // fixed
         try {
             encryptedpassword = hashPassword(signUpResponse.getPassword());
@@ -180,25 +178,20 @@ public class UserService {
 
         User user = new User(signUpResponse.getFirstName(), signUpResponse.getLastName(), signUpResponse.getEmail(), encryptedpassword);
 
-
         userRepository.save(user);
 
         final AuthenticationLogin authenticationLogin= new AuthenticationLogin(user);
 
         authenticationService.saveAuthentication(authenticationLogin);
 
-
         //patient
         Patient patient = new Patient(user.getFirstName(), user.getLastName(), user.getEmail());
 
         p_Repository.save(patient);
 
-
         Response response = new Response("Success","Patient Created");
 
-
-
-
         return response;
+
     }
 }
