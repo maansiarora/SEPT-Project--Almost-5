@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'chatMenu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -210,7 +211,12 @@ class _TextScreenState extends State<TextScreen> {
                 //height: 70,
                 padding: const EdgeInsets.fromLTRB(260, 50, 30, 0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const chatMenu()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
