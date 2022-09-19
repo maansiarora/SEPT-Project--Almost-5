@@ -24,6 +24,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 @Service
+@Transactional
 public class UserService {
 
     @Autowired
@@ -37,9 +38,8 @@ public class UserService {
     @Autowired
     PatientRepository p_Repository;
 
+    // @Transactional
 
-
-    @Transactional
     public Response signup(SignUpResponse signUpResponse){
 
 

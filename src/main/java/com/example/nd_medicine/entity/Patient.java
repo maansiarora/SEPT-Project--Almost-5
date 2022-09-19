@@ -38,7 +38,12 @@ public class Patient {
 
     public void setPhone(String phone) { this.phone = phone; }
 
-    public Patient() {
+    public Patient(Integer id, String firstname, String lastname, String email, String phone) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.phone = phone;
     }
 
     public Patient(String firstname, String lastname, String email) {
