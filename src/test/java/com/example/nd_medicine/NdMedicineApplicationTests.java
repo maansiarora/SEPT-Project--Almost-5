@@ -60,50 +60,48 @@ class NdMedicineApplicationTests {
     }
 
     @Test
-    public void given_when_thenReturnString() throws Exception {
+    public void givenNewPatient_whenSigningUp_thenAddNewPatientSuccess() throws Exception {
 
-        String postRequest = "{\"first_name\" : \"First Name\", \"last_name\" : \"Last Name\", \"email\" : \"email\", \"password\" : \"password\"}";
-
-        Patient testPatient = new Patient(2, "firstname", "lastname", "email", "0000000000");
+        Patient testPatient = new Patient(0, "Debbie", "Lou", "debbielou@gmail.com", "0481555666");
         Response response = new Response("Success","Patient Created");
         given(service.signupPatient(any())).willReturn(response);
 
-        mvc.perform(post("/user/signup/patient").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(testPatient))).andExpect(MockMvcResultMatchers.jsonPath("$.status", CoreMatchers.is("Success")));
+        mvc.perform(post("/user/signup/patient")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(JsonUtil.toJson(testPatient)))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers
+                        .jsonPath("$.status", CoreMatchers.is("Success")));
         verify(service, VerificationModeFactory.times(1)).signupPatient(any());
         reset(service);
 
-//        SignUpResponse testResponse = new SignUpResponse();
-//        testResponse.setFirstName("First Name");
-//        testResponse.setLastName("Last Name:");
-//        testResponse.setEmail("email");
-//        testResponse.setPassword("password");
-//
-//        service.signupPatients(testResponse);
-//
-//        // Need a method in each class to return post request
-//
-//        MvcResult result = mvc.perform(post("/user/signup/patient")
-//                        .accept(MediaType.APPLICATION_JSON)
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(postRequest))
-//                .andDo(MockMvcResultHandlers.print())
-//                .andReturn();
-//
-//        String content = result.getResponse().getContentAsString();
-//        System.out.println("Body Content:\n" + content);
+    }
 
+    @Test
+    public void givenDuplicatePatient_whenSigningUp_thenAddNewPatientFail() throws Exception {
+
+        Patient testPatient = new Patient(0, "Debbie", "Lou", "debbielou@gmail.com", "0481555666");
+        Patient testPatientDuplicateId = new Patient(0, "Definitely-Not-Debbie", "Lou", "definitelynotdebbie@gmail.com", "0481666555");
+
+        Response response = new Response("Failed","Patient Already Exists");
+
+        given(service.signupPatient(any())).willReturn(response);
+
+        mvc.perform(post("/user/signup/patient")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtil.toJson(testPatient)));
+
+        mvc.perform(post("/user/signup/patient")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtil.toJson(testPatientDuplicateId)))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers
+                        .jsonPath("$.status", CoreMatchers.is("Failed")));
+
+
+        verify(service, VerificationModeFactory.times(1)).signupPatient(any());
+        reset(service);
 
     }
 
 }
-
-// Test Attempt 2
-
-//    MockHttpServletRequestBuilder requestBuilder = post("/user/signup/patient")
-//            .accept(APPLICATION_JSON)
-//            .contentType(APPLICATION_JSON)
-//            .content(postRequest);
-//
-//        mvc
-//                .perform(requestBuilder)
-//                .andDo(MockMvcResultHandlers.print());

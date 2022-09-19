@@ -160,36 +160,43 @@ public class UserService {
     }
 
     public Response signupPatient(SignUpResponse signUpResponse) {
+
+        Response response;
+
         if(Objects.nonNull(userRepository.findByEmail(signUpResponse.getEmail()))){
-            throw new CustomException("ALready Exsit");
+//            throw new CustomException("Already Exists");
+            response = new Response("Failed","Patient Already Exists");
 
         }
+        else {
 
-        String encryptedpassword = signUpResponse.getPassword();
+            String encryptedpassword = signUpResponse.getPassword();
 
-        System.out.println(encryptedpassword);
+            System.out.println(encryptedpassword);
 
-        // fixed
-        try {
-            encryptedpassword = hashPassword(signUpResponse.getPassword());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            // fixed
+            try {
+                encryptedpassword = hashPassword(signUpResponse.getPassword());
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+
+            User user = new User(signUpResponse.getFirstName(), signUpResponse.getLastName(), signUpResponse.getEmail(), encryptedpassword);
+
+            userRepository.save(user);
+
+            final AuthenticationLogin authenticationLogin = new AuthenticationLogin(user);
+
+            authenticationService.saveAuthentication(authenticationLogin);
+
+            //patient
+            Patient patient = new Patient(user.getFirstName(), user.getLastName(), user.getEmail());
+
+            p_Repository.save(patient);
+
+            response = new Response("Success", "Patient Created");
+
         }
-
-        User user = new User(signUpResponse.getFirstName(), signUpResponse.getLastName(), signUpResponse.getEmail(), encryptedpassword);
-
-        userRepository.save(user);
-
-        final AuthenticationLogin authenticationLogin= new AuthenticationLogin(user);
-
-        authenticationService.saveAuthentication(authenticationLogin);
-
-        //patient
-        Patient patient = new Patient(user.getFirstName(), user.getLastName(), user.getEmail());
-
-        p_Repository.save(patient);
-
-        Response response = new Response("Success","Patient Created");
 
         return response;
 
