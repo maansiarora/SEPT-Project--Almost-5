@@ -22,6 +22,10 @@ public class Patient {
     @Column(name = "Phone")
     private String phone;
 
+    public Patient() {
+
+    }
+
     public Integer getId() { return id; }
 
     public void setId(Integer id) { this.id = id; }

@@ -116,41 +116,45 @@ public class UserService {
 
     public Response signupDoctor(SignUpResponse signUpResponse) {
 
-        if(Objects.nonNull(userRepository.findByEmail(signUpResponse.getEmail()))){
+        Response response;
+
+        if (Objects.nonNull(userRepository.findByEmail(signUpResponse.getEmail()))) {
+            response = new Response("Failed", "Doctor Already Exists");
             throw new CustomException("ALready Exsit");
+        }
+        else {
+
+            String encryptedpassword = signUpResponse.getPassword();
+
+            System.out.println(encryptedpassword);
+
+
+            // fixed
+            try {
+                encryptedpassword = hashPassword(signUpResponse.getPassword());
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+
+            User user = new User(signUpResponse.getFirstName(), signUpResponse.getLastName(), signUpResponse.getEmail(), encryptedpassword);
+
+
+            userRepository.save(user);
+
+            final AuthenticationLogin authenticationLogin = new AuthenticationLogin(user);
+
+            authenticationService.saveAuthentication(authenticationLogin);
+
+
+            //doctor
+            Doctor doctor = new Doctor(user.getFirstName(), user.getLastName(), user.getEmail());
+
+            d_Repository.save(doctor);
+
+
+            response = new Response("Success", "Doctor Created");
 
         }
-
-        String encryptedpassword = signUpResponse.getPassword();
-
-        System.out.println(encryptedpassword);
-
-
-
-        // fixed
-        try {
-            encryptedpassword = hashPassword(signUpResponse.getPassword());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-        User user = new User(signUpResponse.getFirstName(), signUpResponse.getLastName(), signUpResponse.getEmail(), encryptedpassword);
-
-
-        userRepository.save(user);
-
-        final AuthenticationLogin authenticationLogin= new AuthenticationLogin(user);
-
-        authenticationService.saveAuthentication(authenticationLogin);
-
-
-        //doctor
-        Doctor doctor = new Doctor(user.getFirstName(), user.getLastName(), user.getEmail());
-
-        d_Repository.save(doctor);
-
-
-        Response response = new Response("Success","Doctor Created");
 
 
 
@@ -164,8 +168,9 @@ public class UserService {
         Response response;
 
         if(Objects.nonNull(userRepository.findByEmail(signUpResponse.getEmail()))){
-//            throw new CustomException("Already Exists");
+//
             response = new Response("Failed","Patient Already Exists");
+            throw new CustomException("Already Exists");
 
         }
         else {

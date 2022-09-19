@@ -1,14 +1,22 @@
 package com.example.nd_medicine;
 
 import com.example.nd_medicine.controller.UserController;
+import com.example.nd_medicine.entity.AuthenticationLogin;
+import com.example.nd_medicine.entity.Doctor;
 import com.example.nd_medicine.entity.Patient;
 import com.example.nd_medicine.entity.User;
+import com.example.nd_medicine.exception.CustomException;
+import com.example.nd_medicine.repository.DoctorRepository;
+import com.example.nd_medicine.repository.PatientRepository;
+import com.example.nd_medicine.security.LoginResponse;
 import com.example.nd_medicine.security.Response;
 import com.example.nd_medicine.security.SignUpResponse;
+import com.example.nd_medicine.service.AuthenticationService;
 import com.example.nd_medicine.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.spi.json.GsonJsonProvider;
 import org.hamcrest.CoreMatchers;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.Before;
@@ -40,6 +48,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.print.Doc;
+import java.util.Objects;
+
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = UserController.class)
 class NdMedicineApplicationTests {
@@ -49,14 +60,26 @@ class NdMedicineApplicationTests {
     private MockMvc mvc;
 
     @MockBean
-    private UserService service;
+    private PatientRepository p_repository;
 
-    @Autowired
-    private WebApplicationContext webApplicationContext;
+    @MockBean
+    private DoctorRepository d_repository;
+
+    @MockBean
+    private UserService userservice;
+
+    @MockBean
+    private AuthenticationService authenticationservice;
 
     @Before
     public void setUp() throws Exception {
 
+    }
+
+    @After
+    public void resetDb() {
+        p_repository.deleteAll();
+        d_repository.deleteAll();
     }
 
     @Test
@@ -64,16 +87,16 @@ class NdMedicineApplicationTests {
 
         Patient testPatient = new Patient(0, "Debbie", "Lou", "debbielou@gmail.com", "0481555666");
         Response response = new Response("Success","Patient Created");
-        given(service.signupPatient(any())).willReturn(response);
+        given(userservice.signupPatient(any())).willReturn(response);
 
         mvc.perform(post("/user/signup/patient")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.toJson(testPatient)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtil.toJson(testPatient)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers
                         .jsonPath("$.status", CoreMatchers.is("Success")));
-        verify(service, VerificationModeFactory.times(1)).signupPatient(any());
-        reset(service);
+        verify(userservice, VerificationModeFactory.times(1)).signupPatient(any());
+        reset(userservice);
 
     }
 
@@ -85,11 +108,9 @@ class NdMedicineApplicationTests {
 
         Response response = new Response("Failed","Patient Already Exists");
 
-        given(service.signupPatient(any())).willReturn(response);
+        p_repository.saveAndFlush(testPatient);
 
-        mvc.perform(post("/user/signup/patient")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(JsonUtil.toJson(testPatient)));
+        given(userservice.signupPatient(any())).willReturn(response);
 
         mvc.perform(post("/user/signup/patient")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -97,10 +118,56 @@ class NdMedicineApplicationTests {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers
                         .jsonPath("$.status", CoreMatchers.is("Failed")));
+        verify(userservice, VerificationModeFactory.times(1)).signupPatient(any());
+        reset(userservice);
+
+    }
+
+    @Test
+    public void givenNewDoctor_whenSigningUp_thenAddNewDoctorSuccess() throws Exception {
+
+        Doctor testDoctor = new Doctor("Liza", "Liza's Last Name", "lizasemailaddress@gmail.com");
+        Response response = new Response("Success","Doctor Created");
+        given(userservice.signupDoctor(any())).willReturn(response);
+
+        mvc.perform(post("/user/signup/doctor")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtil.toJson(testDoctor)))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers
+                        .jsonPath("$.status", CoreMatchers.is("Success")));
+        verify(userservice, VerificationModeFactory.times(1)).signupDoctor(any());
+        reset(userservice);
+
+    }
+
+    @Test
+    public void givenDuplicateDoctorEmail_whenSigningUp_thenAddNewDoctorFail() throws Exception {
+
+        Doctor testDoctor = new Doctor("Liza", "Liza's Last Name", "lizasemailaddress@gmail.com");
+        Doctor testDoctorDuplicate = new Doctor("LizaV2ElectricBoogaloo", "Liza's Last Name", "lizasemailaddress@gmail.com");
+
+        Response response = new Response("Failed","Doctor Already Exists");
+
+        d_repository.saveAndFlush(testDoctor);
+
+        given(userservice.signupDoctor(any())).willReturn(response);
+
+        mvc.perform(post("/user/signup/doctor")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtil.toJson(testDoctorDuplicate)))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers
+                        .jsonPath("$.status", CoreMatchers.is("Failed")));
+        verify(userservice, VerificationModeFactory.times(1)).signupDoctor(any());
+        reset(userservice);
+
+    }
+
+    @Test
+    public void givenCorrectPatientPassword_whenLoggingIn_thenA() throws Exception {
 
 
-        verify(service, VerificationModeFactory.times(1)).signupPatient(any());
-        reset(service);
 
     }
 
