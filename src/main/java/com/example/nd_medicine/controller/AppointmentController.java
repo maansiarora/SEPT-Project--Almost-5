@@ -5,6 +5,7 @@ import com.example.nd_medicine.entity.Doctor;
 import com.example.nd_medicine.entity.Patient;
 import com.example.nd_medicine.repository.DoctorRepository;
 import com.example.nd_medicine.repository.PatientRepository;
+import com.example.nd_medicine.repository.SlotRepository;
 import com.example.nd_medicine.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,9 @@ public class AppointmentController {
 
     @Autowired
     PatientRepository patientRepository;
+
+    @Autowired
+    SlotRepository slotRepository;
 
 
     public AppointmentController(AppointmentService appointmentService) {
