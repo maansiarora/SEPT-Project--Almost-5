@@ -1,19 +1,18 @@
+// importing the required packages
 import 'package:flutter/material.dart';
-
 import 'choiceLogin.dart';
 
+// this the page where the admin would login
 void main() => runApp(const adminLogin());
 
 class adminLogin extends StatelessWidget {
   const adminLogin({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // app bar with a back icon to go back to the previous page
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -25,11 +24,11 @@ class adminLogin extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => choiceLogin()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding scrollbar to the page
         body: const Scrollbar(child: MyadminLogin()),
       ),
     );
@@ -69,6 +68,8 @@ class _MyadminLogin extends State<MyadminLogin> {
                       fontWeight: FontWeight.w600,
                     ),
                   )),
+
+              // fields for details that needs to be filled in
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 80, 30, 0),
                 child: TextFormField(
@@ -130,6 +131,8 @@ class _MyadminLogin extends State<MyadminLogin> {
                           })),
                 ),
               ),
+
+              // login button which would take them to the admin dashboard
               Container(
                   height: 140,
                   padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),

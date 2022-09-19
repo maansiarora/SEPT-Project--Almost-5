@@ -1,20 +1,19 @@
+// importing the libraries and packages to be used
 import 'package:flutter/material.dart';
 import 'loginSignUp.dart';
 import 'package:splashscreen/splashscreen.dart';
 
+// this page is the initial loading page for the app.
 void main() => runApp(const welcome());
 
 class welcome extends StatelessWidget {
   const welcome({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      //title: _title,
       home: Scaffold(
-        //appBar: AppBar(title: const Text(_title)),
+        // adding scrollbar
         body: Scrollbar(child: Mywelcome()),
       ),
     );
@@ -33,8 +32,11 @@ class _Mywelcome extends State<Mywelcome> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: SplashScreen(
+            // time for which the screen should load
             seconds: 6,
+            // the page which should be displayed next
             navigateAfterSeconds: const loginSignUp(),
+            // text that needs to be appeared on the screen
             title: const Text(
               'ND Telemedicine!',
               style: TextStyle(

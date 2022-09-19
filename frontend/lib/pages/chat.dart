@@ -1,7 +1,9 @@
+// importing the required packages and pages
 import 'package:flutter/material.dart';
 import 'messages.dart';
 import 'users.dart';
 
+// this page is the display of actual chat conversation between the doctor and the patient
 class chatContact extends StatefulWidget {
   const chatContact({Key? key, required this.user}) : super(key: key);
   final User user;
@@ -18,6 +20,7 @@ class _chatContactState extends State<chatContact> {
         children: <Widget>[
           Column(
             children: [
+              // senders message bubble
               Row(
                 children: <Widget>[
                   Container(
@@ -45,12 +48,14 @@ class _chatContactState extends State<chatContact> {
                               offset: const Offset(0, 3),
                             )
                           ]),
+                      // displaying the text in the message
                       child: Text(
                         message.text,
                         style: const TextStyle(fontSize: 15),
                       ),
                     ),
                   ),
+                  // displaying the time of the message
                   Container(
                     child: Text(
                       message.time,
@@ -67,6 +72,7 @@ class _chatContactState extends State<chatContact> {
     } else {
       return Scrollbar(
           child: Column(
+        // receivers message bubble
         children: <Widget>[
           Column(
             children: [
@@ -115,6 +121,7 @@ class _chatContactState extends State<chatContact> {
     }
   }
 
+  // making the bottom send message field
   _sendMessageArea() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -122,18 +129,21 @@ class _chatContactState extends State<chatContact> {
       color: Colors.white,
       child: Row(
         children: <Widget>[
+          // file attachment icon
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.attach_file),
             iconSize: 25,
             color: Colors.deepPurple,
           ),
+          // send a message placeholder
           const Expanded(
             child: TextField(
               decoration: InputDecoration.collapsed(hintText: "Send a message"),
               textCapitalization: TextCapitalization.sentences,
             ),
           ),
+          // send message icon
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.send),
@@ -149,8 +159,10 @@ class _chatContactState extends State<chatContact> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //adding app bar
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
+        // getting the name of the sender from the backend
         title: Text(
           widget.user.name,
         ),

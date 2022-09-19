@@ -1,19 +1,19 @@
+// importing all the packages and pages
 import 'package:flutter/material.dart';
 import 'doctorsProfile.dart';
 import 'bookingMain.dart';
 
+// this page is for the patient to search doctors on the basis of their name or specialization
 void main() => runApp(const newAppointment());
 
 class newAppointment extends StatelessWidget {
   const newAppointment({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // app bar with the back icon to go to the previous page
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -25,11 +25,11 @@ class newAppointment extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => bookingMain()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding scrollbar to the page
         body: const Scrollbar(child: MynewAppointment()),
       ),
     );
@@ -43,7 +43,9 @@ class MynewAppointment extends StatefulWidget {
   State<MynewAppointment> createState() => _MynewAppointment();
 }
 
+// creating the default option of the dropdown
 String dropdownValue = 'Choose specialization';
+// creating the empty list for storing dummy values for now
 List<String> message = [];
 
 class _MynewAppointment extends State<MynewAppointment> {
@@ -63,6 +65,8 @@ class _MynewAppointment extends State<MynewAppointment> {
                   fontWeight: FontWeight.w600,
                 ),
               )),
+
+          // adding a search bar for the user to search the doctors by their name
           Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(30, 40, 30, 30),
@@ -95,6 +99,8 @@ class _MynewAppointment extends State<MynewAppointment> {
                       )),
                 )
               ])),
+
+          // creating a dropbox for the patient to choose the specialization of the doctor
           Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
@@ -130,6 +136,7 @@ class _MynewAppointment extends State<MynewAppointment> {
                               });
                               function();
                             },
+                            // hardcoding the dropdown list for now
                             items: <String>[
                               'Choose specialization',
                               'General Practitioner',
@@ -147,6 +154,8 @@ class _MynewAppointment extends State<MynewAppointment> {
                           ))),
                 ],
               )),
+
+          // displaying the list of relevant doctors from the chosen option
           Container(
               height: 300,
               padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
@@ -171,6 +180,7 @@ class _MynewAppointment extends State<MynewAppointment> {
         ]));
   }
 
+  // hardcoding the list doctors for now
   void function() {
     List<String> status;
     if (dropdownValue == 'Dentist') {

@@ -1,20 +1,20 @@
+// importing the required packages and pages
 import 'package:flutter/material.dart';
 import 'choiceLogin.dart';
 import 'choiceSignup.dart';
 import 'doctorDashboard.dart';
 
+// this page is for the doctor logging in to their account
 void main() => runApp(const doctorLogin());
 
 class doctorLogin extends StatelessWidget {
   const doctorLogin({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // creating the app bar with the back option
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -26,11 +26,11 @@ class doctorLogin extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => choiceLogin()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding the scrollbar to the page
         body: const Scrollbar(child: MydoctorLogin()),
       ),
     );
@@ -56,6 +56,7 @@ class _MydoctorLogin extends State<MydoctorLogin> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        // creating a form for the user to fill in their details for logging in
         Form(
           child: Column(
             children: [
@@ -70,6 +71,8 @@ class _MydoctorLogin extends State<MydoctorLogin> {
                       fontWeight: FontWeight.w600,
                     ),
                   )),
+
+              // different fields to be filled
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 80, 30, 0),
                 child: TextFormField(
@@ -131,6 +134,8 @@ class _MydoctorLogin extends State<MydoctorLogin> {
                           })),
                 ),
               ),
+
+              // login button which would take the user to their dashboard if the provided details are correct
               Container(
                   height: 140,
                   padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
@@ -153,6 +158,8 @@ class _MydoctorLogin extends State<MydoctorLogin> {
                           fontSize: 19,
                         )),
                   )),
+
+              // link to sign-up if the account doesn't exist already
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -173,7 +180,6 @@ class _MydoctorLogin extends State<MydoctorLogin> {
                         MaterialPageRoute(
                             builder: (context) => const choiceSignUp()),
                       );
-                      //signup screen
                     },
                   )
                 ],

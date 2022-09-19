@@ -1,22 +1,20 @@
+// importing the required packages and pages
 import 'package:flutter/material.dart';
-import 'package:sept/pages/bookingConfirmation.dart';
-import 'package:sept/pages/calender.dart';
-import 'package:sept/pages/newAppointment.dart';
 import 'bookingConfirmation.dart';
+import 'calender.dart';
 import 'newAppointment.dart';
 
+// this page is to display the summary of the appointment to the patient to check and confirm their booking
 void main() => runApp(const appointmentSummary());
 
 class appointmentSummary extends StatelessWidget {
   const appointmentSummary({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // adding the app bar with back icon to go back to the previous page
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -28,11 +26,11 @@ class appointmentSummary extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => calender()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding scrollbar to the page
         body: const Scrollbar(child: MyappointmentSummary()),
       ),
     );
@@ -47,15 +45,13 @@ class MyappointmentSummary extends StatefulWidget {
 }
 
 class _MyappointmentSummary extends State<MyappointmentSummary> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: <Widget>[
+            // the appointment summary would display the day, date, time, doctor's name
             Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(30, 50, 30, 70),
@@ -68,7 +64,6 @@ class _MyappointmentSummary extends State<MyappointmentSummary> {
                   ),
                 )),
             Container(
-              //alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(80, 10, 50, 5),
               child: const Text.rich(
                 TextSpan(
@@ -86,7 +81,6 @@ class _MyappointmentSummary extends State<MyappointmentSummary> {
               ),
             ),
             Container(
-              //alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(80, 10, 50, 5),
               child: const Text.rich(
                 TextSpan(
@@ -102,7 +96,6 @@ class _MyappointmentSummary extends State<MyappointmentSummary> {
               ),
             ),
             Container(
-              //alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(80, 10, 50, 5),
               child: const Text.rich(
                 TextSpan(
@@ -124,7 +117,6 @@ class _MyappointmentSummary extends State<MyappointmentSummary> {
               ),
             ),
             Container(
-              //alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(80, 10, 50, 70),
               child: const Text.rich(
                 TextSpan(
@@ -139,6 +131,8 @@ class _MyappointmentSummary extends State<MyappointmentSummary> {
                 ),
               ),
             ),
+
+            // options to either confirm or cancel the booking
             Wrap(
               children: <Widget>[
                 Container(

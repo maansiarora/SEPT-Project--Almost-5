@@ -1,21 +1,20 @@
+// importing the required packages and pages
 import 'package:flutter/material.dart';
-import 'package:sept/pages/choiceSignup.dart';
+import 'choiceSignup.dart';
 import 'patientDashboard.dart';
-
 import 'choiceLogin.dart';
 
+// this is the sign-up page for the patient
 void main() => runApp(const patientSignUp());
 
 class patientSignUp extends StatelessWidget {
   const patientSignUp({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // adding app bar with back icon to link to the previous page
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -27,11 +26,10 @@ class patientSignUp extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => choiceSignUp()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+        // adding scrollbar to the page
         body: const Scrollbar(child: MypatientSignUp()),
       ),
     );
@@ -57,9 +55,11 @@ class _MypatientSignUp extends State<MypatientSignUp> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        // creating the form to take the user input to pass it on to the backend
         Form(
           child: Column(
             children: [
+              // different fields that we need the user to fill in while signing up
               Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.fromLTRB(30, 100, 30, 30),
@@ -170,6 +170,7 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                           color: Colors.deepPurple,
                         ),
                       ),
+                      // option for the user to hide or view the password
                       suffixIcon: IconButton(
                           icon: Icon(_passwordVisible
                               ? Icons.visibility_off
@@ -182,6 +183,8 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                           })),
                 ),
               ),
+
+              // signup button
               Container(
                   height: 100,
                   padding: const EdgeInsets.fromLTRB(30, 60, 30, 0),
@@ -204,6 +207,8 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                           fontSize: 19,
                         )),
                   )),
+
+              // link to the login page if the account already exists
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -224,7 +229,6 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                         MaterialPageRoute(
                             builder: (context) => const choiceLogin()),
                       );
-                      //signup screen
                     },
                   )
                 ],

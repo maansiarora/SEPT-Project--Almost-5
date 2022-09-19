@@ -1,26 +1,25 @@
+// importing the required packages and pages
 import 'package:flutter/material.dart';
-import 'package:sept/pages/choiceSignup.dart';
-
+import 'choiceSignup.dart';
 import 'choiceLogin.dart';
 import 'doctorDashboard.dart';
-import 'choiceSignup.dart';
 
+// this is the sign-up page for the doctor
 void main() => runApp(const doctorSignUp());
 
 class doctorSignUp extends StatelessWidget {
   const doctorSignUp({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // adding the app bar with the back icon to go to the previous page
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
           elevation: 0.0,
+          // linking the icon to the previous page
           leading: GestureDetector(
             onTap: () {
               Navigator.push(
@@ -33,6 +32,8 @@ class doctorSignUp extends StatelessWidget {
                 ),
           ),
         ),
+
+        // adding scrollbar to the page
         body: const Scrollbar(child: MydoctorSignUp()),
       ),
     );
@@ -59,9 +60,11 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        // Form() to get the user input so that we can pass it on to the backend
         Form(
           child: Column(
             children: [
+              // heading text to be displayed
               Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.fromLTRB(30, 20, 30, 10),
@@ -73,6 +76,8 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                       fontWeight: FontWeight.w600,
                     ),
                   )),
+
+              // different fields that the user needs to put in like name, email-id, and setting the password
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextFormField(
@@ -172,6 +177,7 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                           color: Colors.deepPurple,
                         ),
                       ),
+                      // giving an option for the user to hide or view their password
                       suffixIcon: IconButton(
                           icon: Icon(_passwordVisible
                               ? Icons.visibility_off
@@ -184,6 +190,7 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                           })),
                 ),
               ),
+              // the doctor will have to select their specialization while signing up
               Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.fromLTRB(40, 30, 40, 0),
@@ -235,6 +242,8 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                               ))),
                     ],
                   )),
+
+              // the final signup button
               Container(
                   height: 100,
                   padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
@@ -257,6 +266,8 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                           fontSize: 19,
                         )),
                   )),
+
+              // if the user already has an account, they can login by clicking on the login text
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -271,13 +282,13 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                           fontSize: 20,
                           color: Colors.deepPurple,
                         )),
+                    // linking
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const choiceLogin()),
                       );
-                      //signup screen
                     },
                   )
                 ],

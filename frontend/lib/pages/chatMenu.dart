@@ -1,8 +1,10 @@
+// importing required packages and pages
 import 'package:flutter/material.dart';
 import 'doctorDashboard.dart';
 import 'chat.dart';
 import 'messages.dart';
 
+// this page is to display the chat menu where the user will be able to see the preview of all the chats they have had with different people
 class chatMenu extends StatefulWidget {
   const chatMenu({Key? key}) : super(key: key);
 
@@ -14,7 +16,9 @@ class _chatMenuState extends State<chatMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // adding app bar with the back icon to go back to the dashboard
       appBar: AppBar(
+        // heading "chat" being displayed on the app bar
         title: const Text("Chats",
             style: TextStyle(
                 color: Colors.deepPurple, fontWeight: FontWeight.w600)),
@@ -28,35 +32,22 @@ class _chatMenuState extends State<chatMenu> {
               MaterialPageRoute(builder: (context) => doctorDashboard()),
             );
           },
-          child: const Icon(Icons.arrow_back, color: Colors.black
-              // add custom icons also
-              ),
+          child: const Icon(Icons.arrow_back, color: Colors.black),
         ),
       ),
+      // adding scrollbar to the page
       body: Scrollbar(
           child: SingleChildScrollView(
               child: Column(
         children: <Widget>[
-          const SizedBox(
-              //height: 20,
-              ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const <Widget>[
-                SizedBox(
-                    //height: 20,
-                    ),
-                /*Text("Chats",
-                    style: TextStyle(
-                      color: Colors.deepPurple,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w600,
-                    )),*/
-              ],
+              children: const <Widget>[],
             ),
           ),
+          // adding the search bar to search through the name
           Container(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
             child: Material(
@@ -79,6 +70,7 @@ class _chatMenuState extends State<chatMenu> {
               ),
             ),
           ),
+          // getting the name of the sender, their message and the time the message was sent from the user and model classes
           ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,

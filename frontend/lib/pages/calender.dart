@@ -1,10 +1,11 @@
+// importing the required packages and pages
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:sept/pages/appointmentSummary.dart';
-import 'package:sept/pages/doctorsProfile.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'appointmentSummary.dart';
+import 'doctorsProfile.dart';
+import 'package:table_calendar/table_calendar.dart';
 
+// this page is for the patient to select any date for which they want to see the time slots for
 void main() {
   initializeDateFormatting().then((_) => runApp(calender()));
 }
@@ -31,6 +32,7 @@ class _TableBasicsExampleState extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        // adding the app bar with a back icon
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -42,11 +44,11 @@ class _TableBasicsExampleState extends State {
                 MaterialPageRoute(builder: (context) => doctorsProfile()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding scrollbar
         body: Scrollbar(
             child: SingleChildScrollView(
                 child: Column(
@@ -69,6 +71,8 @@ class _TableBasicsExampleState extends State {
                   child: Divider(
                     color: Colors.grey,
                   )),
+
+              // adding calendar to choose a date
               Padding(
                   padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                   child: TableCalendar(
@@ -99,6 +103,8 @@ class _TableBasicsExampleState extends State {
                       _focusedDay = focusedDay;
                     },
                   )),
+
+              // displaying the list of available times for a chosen date
               Container(
                 height: 200,
                 alignment: Alignment.center,
@@ -107,6 +113,7 @@ class _TableBasicsExampleState extends State {
                   itemCount: appointment.length,
                   itemBuilder: (context, index) {
                     return ListTile(
+                      // linking the date to the confirmation page for the appointment
                       onTap: () {
                         Navigator.push(
                           context,
@@ -125,6 +132,7 @@ class _TableBasicsExampleState extends State {
             ]))));
   }
 
+  // dummy values for the time slots for now
   void func(day) {
     List<String> avail = ['9:00-9:30', '10:00-10:30', '16:00-16:30'];
     setState(() => appointment = avail);

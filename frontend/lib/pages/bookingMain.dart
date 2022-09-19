@@ -1,20 +1,20 @@
+//importing required packages and pages
 import 'package:flutter/material.dart';
 import 'viewBooking.dart';
 import 'newAppointment.dart';
 import 'patientDashboard.dart';
 
+// this page is for the patient to choose if they want to book a new appointment or view their past or existing appintments
 void main() => runApp(const bookingMain());
 
 class bookingMain extends StatelessWidget {
   const bookingMain({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // app bar with the back icon to go back to the previous page - dashboard
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -26,11 +26,11 @@ class bookingMain extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => patientDashboard()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding scrollbar to the page
         body: const Scrollbar(child: MybookingMain()),
       ),
     );
@@ -65,6 +65,8 @@ class _MybookingMain extends State<MybookingMain> {
                     fontWeight: FontWeight.w600,
                   ),
                 )),
+
+            // button to go further to make a new appointment
             Container(
                 height: 70,
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
@@ -87,6 +89,8 @@ class _MybookingMain extends State<MybookingMain> {
                         fontSize: 19,
                       )),
                 )),
+
+            // button to view past or present appointments
             Container(
                 height: 70,
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),

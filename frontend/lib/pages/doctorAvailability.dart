@@ -1,8 +1,10 @@
+// importing packages and required pages and libraries
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'doctorAvailabilitySave.dart';
 import 'doctorDashboard.dart';
 
+// this page is for the doctor to fill in their availability so that it is reflected accordingly to the patient while they are booking
 void main() {
   runApp(const MyApp());
 }
@@ -14,21 +16,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TextScreen(),
+      home: doctorAvail(),
     );
   }
 }
 
-class TextScreen extends StatefulWidget {
-  const TextScreen({
+class doctorAvail extends StatefulWidget {
+  const doctorAvail({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<TextScreen> createState() => _TextScreenState();
+  State<doctorAvail> createState() => _doctorAvailState();
 }
 
-class _TextScreenState extends State<TextScreen> {
+class _doctorAvailState extends State<doctorAvail> {
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
   TimeOfDay selectedTime2 = TimeOfDay.now();
@@ -37,7 +39,7 @@ class _TextScreenState extends State<TextScreen> {
   bool showTime = false;
   bool showDateTime = false;
 
-  // Select for Date
+  // selection for the date - date picker
   Future<DateTime> _selectDate(BuildContext context) async {
     final selected = await showDatePicker(
       context: context,
@@ -54,7 +56,7 @@ class _TextScreenState extends State<TextScreen> {
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                primary: Colors.deepPurpleAccent, // button text color
+                primary: Colors.deepPurpleAccent,
               ),
             ),
           ),
@@ -70,7 +72,7 @@ class _TextScreenState extends State<TextScreen> {
     return selectedDate;
   }
 
-// Select for Time
+// selection for the start time - time picker
   Future<TimeOfDay> _selectTime(BuildContext context) async {
     final selected = await showTimePicker(
       context: context,
@@ -101,7 +103,7 @@ class _TextScreenState extends State<TextScreen> {
     return selectedTime;
   }
 
-  // Select for Time
+  // selection for end time - time picker
   Future<TimeOfDay> _selectTime2(BuildContext context) async {
     final selected = await showTimePicker(
       context: context,
@@ -152,7 +154,6 @@ class _TextScreenState extends State<TextScreen> {
 
   String getTime(TimeOfDay tod) {
     final now = DateTime.now();
-
     final dt = DateTime(now.year, now.month, now.day, tod.hour, tod.minute);
     final format = DateFormat.jm();
     return format.format(dt);
@@ -162,6 +163,7 @@ class _TextScreenState extends State<TextScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // adding the app bar with back icon to go to the previous page
         backgroundColor: Colors.transparent,
         bottomOpacity: 0.0,
         elevation: 0.0,
@@ -172,11 +174,11 @@ class _TextScreenState extends State<TextScreen> {
               MaterialPageRoute(builder: (context) => doctorDashboard()),
             );
           },
-          child: const Icon(Icons.arrow_back, color: Colors.black
-              // add custom icons also
-              ),
+          child: const Icon(Icons.arrow_back, color: Colors.black),
         ),
       ),
+
+      // adding scrollbar
       body: Scrollbar(
           child: Center(
         child: Form(
@@ -198,6 +200,7 @@ class _TextScreenState extends State<TextScreen> {
             Container(
               padding: const EdgeInsets.fromLTRB(70, 50, 70, 3),
               width: double.infinity,
+              // allowing the user to choose the date and displaying the chosen date
               child: ElevatedButton(
                 onPressed: () {
                   _selectDate(context);
@@ -242,6 +245,7 @@ class _TextScreenState extends State<TextScreen> {
                     )),
               ),
             ),
+            // allowing the user to choose the time and displaying the chosen time
             showTime
                 ? Center(
                     child: Text(getTime(selectedTime),
@@ -269,6 +273,7 @@ class _TextScreenState extends State<TextScreen> {
                     )),
               ),
             ),
+            // allowing the user to choose the time and displaying the chosen time
             showTime
                 ? Center(
                     child: Text(getTime(selectedTime2),

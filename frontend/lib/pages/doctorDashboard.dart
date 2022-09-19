@@ -1,20 +1,20 @@
+// importing different packages and pages
 import 'package:flutter/material.dart';
 import 'chatMenu.dart';
 import 'doctorAvailability.dart';
 
+// this page is the doctor's dashboard.
+// it is not fully made yet.
 void main() => runApp(const doctorDashboard());
 
 class doctorDashboard extends StatelessWidget {
   const doctorDashboard({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      //title: _title,
       home: Scaffold(
-        //appBar: AppBar(title: const Text(_title)),
+        // adding scrollbar to the page
         body: Scrollbar(child: MydoctorDashboard()),
       ),
     );
@@ -73,7 +73,7 @@ class _MydoctorDashboard extends State<MydoctorDashboard> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const TextScreen()),
+                          builder: (context) => const doctorAvail()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

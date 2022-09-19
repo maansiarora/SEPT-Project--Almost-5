@@ -1,20 +1,20 @@
+// importing required packages and pages
 import 'package:flutter/material.dart';
 import 'loginSignUp.dart';
 import 'patientSignUp.dart';
 import 'doctorSignUp.dart';
 
+// this page gives an option to choose to be a doctor or a patient while signing up
 void main() => runApp(const choiceSignUp());
 
 class choiceSignUp extends StatelessWidget {
   const choiceSignUp({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // adding app bar with the back icon to go back to the previous page
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -26,11 +26,11 @@ class choiceSignUp extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => loginSignUp()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding scrollbar to the page
         body: const Scrollbar(child: MychoiceSignUp()),
       ),
     );
@@ -45,15 +45,13 @@ class MychoiceSignUp extends StatefulWidget {
 }
 
 class _MychoiceSignUp extends State<MychoiceSignUp> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: <Widget>[
+            // asking the user about their choice to further take them to the respective sign-up page
             Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(30, 200, 30, 30),
@@ -82,6 +80,7 @@ class _MychoiceSignUp extends State<MychoiceSignUp> {
                     ),
                     primary: Colors.deepPurple[300],
                   ),
+                  // signing up as a doctor
                   child: const Text('Doctor',
                       style: TextStyle(
                         fontSize: 19,
@@ -104,6 +103,7 @@ class _MychoiceSignUp extends State<MychoiceSignUp> {
                     ),
                     primary: Colors.deepPurple[300],
                   ),
+                  // signing up as a patient
                   child: const Text('Patient',
                       style: TextStyle(
                         fontSize: 19,

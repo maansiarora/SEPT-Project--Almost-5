@@ -1,20 +1,19 @@
+// importing the required packages and pages
 import 'package:flutter/material.dart';
-import 'package:sept/pages/newAppointment.dart';
-import 'calender.dart';
 import 'newAppointment.dart';
+import 'calender.dart';
 
+// this page displays the profile of the doctor that the patient has chosen to book an appointment with
 void main() => runApp(const doctorsProfile());
 
 class doctorsProfile extends StatelessWidget {
   const doctorsProfile({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // creating the app bar with a back icon to go back to the previous page
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -26,11 +25,11 @@ class doctorsProfile extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => newAppointment()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding scrollbar to the page
         body: const Scrollbar(child: MydoctorsProfile()),
       ),
     );
@@ -45,15 +44,13 @@ class MydoctorsProfile extends StatefulWidget {
 }
 
 class _MydoctorsProfile extends State<MydoctorsProfile> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: <Widget>[
+            // different fields saved in by the doctor on their profile that are to be displayed
             Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 10),
@@ -84,7 +81,6 @@ class _MydoctorsProfile extends State<MydoctorsProfile> {
                   color: Colors.black12,
                 )),
             Container(
-                //alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(30, 0, 30, 10),
                 child: const Text(
                   'Contact Details',
@@ -95,11 +91,9 @@ class _MydoctorsProfile extends State<MydoctorsProfile> {
                   ),
                 )),
             Container(
-                //alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(30, 5, 30, 20),
                 child: const Text(
                   'Email Id: doctor@gmail.com\nContact No.: ',
-                  //textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
@@ -111,22 +105,18 @@ class _MydoctorsProfile extends State<MydoctorsProfile> {
                   color: Colors.black12,
                 )),
             Container(
-                //alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
                 child: const Text(
                   'About',
-                  //textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                 )),
             Container(
-                //alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
                 child: const Text(
                   'This is a dummy text. This will be updated by the doctor from their end while building up the profile. It may contain their background, interests, etc.',
-                  //textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
@@ -138,22 +128,18 @@ class _MydoctorsProfile extends State<MydoctorsProfile> {
                   color: Colors.black12,
                 )),
             Container(
-                //alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
                 child: const Text(
                   'Experience',
-                  //textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                 )),
             Container(
-                //alignment: Alignment.center,
                 padding: const EdgeInsets.fromLTRB(30, 5, 30, 30),
                 child: const Text(
                   'Dummy text - 12 years. Will be updated from the doctors end.',
-                  //textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,

@@ -1,20 +1,20 @@
+// importing different packages and pages
 import 'package:flutter/material.dart';
 import 'bookingMain.dart';
 import 'chatMenu.dart';
 
+// this page is the patient's dashboard.
+// it still needs to be made properly.
 void main() => runApp(const patientDashboard());
 
 class patientDashboard extends StatelessWidget {
   const patientDashboard({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      //title: _title,
       home: Scaffold(
-        //appBar: AppBar(title: const Text(_title)),
+        // adding scrollbar to the page
         body: Scrollbar(child: MypatientDashboard()),
       ),
     );

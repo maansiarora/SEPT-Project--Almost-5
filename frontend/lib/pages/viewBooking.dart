@@ -1,19 +1,17 @@
+// importing the required packages
 import 'package:flutter/material.dart';
-import 'loginSignUp.dart';
 
+// this page is for the patient to view their upcoming appointments or past appointments
 void main() => runApp(const viewBooking());
 
 class viewBooking extends StatelessWidget {
   const viewBooking({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      //title: _title,
       home: Scaffold(
-        //appBar: AppBar(title: const Text(_title)),
+        // adding scrollbar to the page
         body: Scrollbar(child: MyviewBooking()),
       ),
     );
@@ -47,6 +45,8 @@ class _MyviewBooking extends State<MyviewBooking> {
                   fontWeight: FontWeight.w600,
                 ),
               )),
+
+          // a dropdown to choose if the user wants to view upcoming appointments or past appointments
           Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
@@ -99,6 +99,8 @@ class _MyviewBooking extends State<MyviewBooking> {
                           ))),
                 ],
               )),
+
+          // list of appointments that will be displayed according to whatever option is chosen from the above dropdown
           Container(
               height: 300,
               padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
@@ -116,6 +118,7 @@ class _MyviewBooking extends State<MyviewBooking> {
         ]));
   }
 
+  // hard coding dummy values about the appointment details for now
   void function() {
     List<String> status;
     if (dropdownValue == 'Upcoming Appointments') {

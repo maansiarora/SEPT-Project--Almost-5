@@ -1,22 +1,21 @@
+// importing required packages and pages
 import 'package:flutter/material.dart';
-import 'package:sept/pages/adminLogin.dart';
+import 'adminLogin.dart';
 import 'loginSignUp.dart';
 import 'patientLogin.dart';
 import 'doctorLogin.dart';
-import 'adminLogin.dart';
 
+// this page asks the user if they want to log in as a doctor, patient or the admin
 void main() => runApp(const choiceLogin());
 
 class choiceLogin extends StatelessWidget {
   const choiceLogin({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // adding the app bar with the back icon to go to the previous page
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -28,11 +27,11 @@ class choiceLogin extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => loginSignUp()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding scrollbar to the page
         body: const Scrollbar(child: MychoiceLogin()),
       ),
     );
@@ -47,9 +46,6 @@ class MychoiceLogin extends StatefulWidget {
 }
 
 class _MychoiceLogin extends State<MychoiceLogin> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -67,6 +63,8 @@ class _MychoiceLogin extends State<MychoiceLogin> {
                     fontWeight: FontWeight.w600,
                   ),
                 )),
+
+            // logging in as a doctor
             Container(
                 height: 70,
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
@@ -89,6 +87,8 @@ class _MychoiceLogin extends State<MychoiceLogin> {
                         fontSize: 19,
                       )),
                 )),
+
+            // logging in as a patient
             Container(
                 height: 70,
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
@@ -111,6 +111,8 @@ class _MychoiceLogin extends State<MychoiceLogin> {
                         fontSize: 19,
                       )),
                 )),
+
+            // logging in as an admin
             Container(
                 height: 70,
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),

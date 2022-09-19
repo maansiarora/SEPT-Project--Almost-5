@@ -1,20 +1,20 @@
+// importing the required packages and pages
 import 'package:flutter/material.dart';
 import 'patientDashboard.dart';
 import 'choiceSignup.dart';
 import 'choiceLogin.dart';
 
+// this is the login page for the patient
 void main() => runApp(const patientLogin());
 
 class patientLogin extends StatelessWidget {
   const patientLogin({Key? key}) : super(key: key);
 
-  //static const String _title = '';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //title: _title,
       home: Scaffold(
+        // adding the app bar with the back icon to go to the previous page
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           bottomOpacity: 0.0,
@@ -26,11 +26,11 @@ class patientLogin extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => choiceLogin()),
               );
             },
-            child: const Icon(Icons.arrow_back, color: Colors.black
-                // add custom icons also
-                ),
+            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
         ),
+
+        // adding scrollbar to the page
         body: const Scrollbar(child: MypatientLogin()),
       ),
     );
@@ -56,6 +56,7 @@ class _MypatientLogin extends State<MypatientLogin> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        // creating form fields to take user input and pass on to the backend for authentication check
         Form(
           child: Column(
             children: [
@@ -70,6 +71,8 @@ class _MypatientLogin extends State<MypatientLogin> {
                       fontWeight: FontWeight.w600,
                     ),
                   )),
+
+              // different fields that the user needs to fill in while logging in
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 80, 30, 0),
                 child: TextFormField(
@@ -131,6 +134,8 @@ class _MypatientLogin extends State<MypatientLogin> {
                           })),
                 ),
               ),
+
+              // the login button taking the user to the dashboard if the details are correct
               Container(
                   height: 140,
                   padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
@@ -153,6 +158,8 @@ class _MypatientLogin extends State<MypatientLogin> {
                           fontSize: 19,
                         )),
                   )),
+
+              // the sign-up link in case the user doesn't have an account
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -173,7 +180,6 @@ class _MypatientLogin extends State<MypatientLogin> {
                         MaterialPageRoute(
                             builder: (context) => const choiceSignUp()),
                       );
-                      //signup screen
                     },
                   )
                 ],

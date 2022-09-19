@@ -1,3 +1,4 @@
+// this is all the dummy users created until backend in integrated
 class User {
   final int id;
   final String name;
