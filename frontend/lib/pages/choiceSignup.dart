@@ -54,7 +54,7 @@ class _MychoiceSignUp extends State<MychoiceSignUp> {
             // asking the user about their choice to further take them to the respective sign-up page
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(30, 200, 30, 30),
+                padding: const EdgeInsets.fromLTRB(30, 170, 30, 30),
                 child: const Text(
                   'Are you a doctor or a patient?',
                   textAlign: TextAlign.center,

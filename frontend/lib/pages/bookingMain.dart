@@ -56,7 +56,7 @@ class _MybookingMain extends State<MybookingMain> {
           children: <Widget>[
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(30, 150, 30, 80),
+                padding: const EdgeInsets.fromLTRB(30, 100, 30, 20),
                 child: const Text(
                   'Appointments',
                   textAlign: TextAlign.center,
@@ -64,6 +64,11 @@ class _MybookingMain extends State<MybookingMain> {
                     fontSize: 30,
                     fontWeight: FontWeight.w600,
                   ),
+                )),
+            const Padding(
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
+                child: Divider(
+                  color: Colors.black,
                 )),
 
             // button to go further to make a new appointment

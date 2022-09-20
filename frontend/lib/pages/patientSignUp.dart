@@ -66,7 +66,7 @@ class _MypatientSignUp extends State<MypatientSignUp> {
               // different fields that we need the user to fill in while signing up
               Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.fromLTRB(30, 100, 30, 30),
+                  padding: const EdgeInsets.fromLTRB(30, 60, 30, 30),
                   child: const Text(
                     'Sign Up as a Patient',
                     textAlign: TextAlign.center,
@@ -220,8 +220,6 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_FormKey.currentState!.validate()) {
-                        // If the form is valid, display a snackbar. In the real world,
-                        // you'd often call a server or save the information in a database.
                         Navigator.push(
                           context,
                           MaterialPageRoute(

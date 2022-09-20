@@ -67,7 +67,7 @@ class _MypatientLogin extends State<MypatientLogin> {
             children: [
               Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.fromLTRB(30, 130, 30, 30),
+                  padding: const EdgeInsets.fromLTRB(30, 70, 30, 30),
                   child: const Text(
                     'Login as a Patient',
                     textAlign: TextAlign.center,
@@ -160,8 +160,6 @@ class _MypatientLogin extends State<MypatientLogin> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_FormKey.currentState!.validate()) {
-                        // If the form is valid, display a snackbar. In the real world,
-                        // you'd often call a server or save the information in a database.
                         Navigator.push(
                           context,
                           MaterialPageRoute(

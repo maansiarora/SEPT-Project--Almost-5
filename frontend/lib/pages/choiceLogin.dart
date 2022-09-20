@@ -54,7 +54,7 @@ class _MychoiceLogin extends State<MychoiceLogin> {
           children: <Widget>[
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(30, 150, 30, 30),
+                padding: const EdgeInsets.fromLTRB(30, 100, 30, 30),
                 child: const Text(
                   'Would you like to login as a doctor, a patient, or the admin?',
                   textAlign: TextAlign.center,

@@ -188,7 +188,7 @@ class _doctorAvailState extends State<doctorAvail> {
           children: [
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(30, 130, 30, 0),
+                padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
                 child: const Text(
                   'Set Availabilities',
                   textAlign: TextAlign.center,
