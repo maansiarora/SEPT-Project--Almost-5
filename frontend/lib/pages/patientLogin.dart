@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'patientDashboard.dart';
 import 'choiceSignup.dart';
 import 'choiceLogin.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 // this is the login page for the patient
 void main() => runApp(const patientLogin());
@@ -52,12 +53,16 @@ class _MypatientLogin extends State<MypatientLogin> {
   get kPrimaryColor => null;
 
   bool _passwordVisible = true;
+
+  final GlobalKey<FormState> _FormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
         // creating form fields to take user input and pass on to the backend for authentication check
         Form(
+          key: _FormKey,
           child: Column(
             children: [
               Container(
@@ -76,6 +81,7 @@ class _MypatientLogin extends State<MypatientLogin> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 80, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
@@ -96,11 +102,18 @@ class _MypatientLogin extends State<MypatientLogin> {
                       ),
                     ),
                   ),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                      EmailValidator(errorText: 'Invalid Email*')
+                    ],
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
                   controller: passwordController,
                   textInputAction: TextInputAction.done,
@@ -132,6 +145,11 @@ class _MypatientLogin extends State<MypatientLogin> {
                               _passwordVisible = !_passwordVisible;
                             });
                           })),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                    ],
+                  ),
                 ),
               ),
 
@@ -141,11 +159,15 @@ class _MypatientLogin extends State<MypatientLogin> {
                   padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const patientDashboard()),
-                      );
+                      if (_FormKey.currentState!.validate()) {
+                        // If the form is valid, display a snackbar. In the real world,
+                        // you'd often call a server or save the information in a database.
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const patientDashboard()),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(

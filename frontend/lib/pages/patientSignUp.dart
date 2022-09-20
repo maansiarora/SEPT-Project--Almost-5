@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'choiceSignup.dart';
 import 'patientDashboard.dart';
 import 'choiceLogin.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 // this is the sign-up page for the patient
 void main() => runApp(const patientSignUp());
@@ -51,12 +52,15 @@ class _MypatientSignUp extends State<MypatientSignUp> {
   get kPrimaryColor => null;
 
   bool _passwordVisible = true;
+
+  final GlobalKey<FormState> _FormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
         // creating the form to take the user input to pass it on to the backend
         Form(
+          key: _FormKey,
           child: Column(
             children: [
               // different fields that we need the user to fill in while signing up
@@ -74,6 +78,7 @@ class _MypatientSignUp extends State<MypatientSignUp> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
@@ -94,11 +99,17 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                       ),
                     ),
                   ),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                    ],
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
@@ -119,11 +130,17 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                       ),
                     ),
                   ),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                    ],
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
@@ -144,11 +161,18 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                       ),
                     ),
                   ),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                      EmailValidator(errorText: 'Invalid Email*')
+                    ],
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
                   controller: passwordController,
                   textInputAction: TextInputAction.done,
@@ -181,6 +205,11 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                               _passwordVisible = !_passwordVisible;
                             });
                           })),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                    ],
+                  ),
                 ),
               ),
 
@@ -190,11 +219,15 @@ class _MypatientSignUp extends State<MypatientSignUp> {
                   padding: const EdgeInsets.fromLTRB(30, 60, 30, 0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const patientDashboard()),
-                      );
+                      if (_FormKey.currentState!.validate()) {
+                        // If the form is valid, display a snackbar. In the real world,
+                        // you'd often call a server or save the information in a database.
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const patientDashboard()),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(

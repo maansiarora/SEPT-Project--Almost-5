@@ -1,6 +1,7 @@
 // importing the required packages
 import 'package:flutter/material.dart';
 import 'choiceLogin.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 // this the page where the admin would login
 void main() => runApp(const adminLogin());
@@ -50,11 +51,15 @@ class _MyadminLogin extends State<MyadminLogin> {
   get kPrimaryColor => null;
 
   bool _passwordVisible = true;
+
+  final GlobalKey<FormState> _FormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
         Form(
+          key: _FormKey,
           child: Column(
             children: [
               Container(
@@ -73,6 +78,7 @@ class _MyadminLogin extends State<MyadminLogin> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 80, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
@@ -93,11 +99,18 @@ class _MyadminLogin extends State<MyadminLogin> {
                       ),
                     ),
                   ),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                      EmailValidator(errorText: 'Invalid Email*')
+                    ],
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
                   controller: passwordController,
                   textInputAction: TextInputAction.done,
@@ -129,6 +142,11 @@ class _MyadminLogin extends State<MyadminLogin> {
                               _passwordVisible = !_passwordVisible;
                             });
                           })),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                    ],
+                  ),
                 ),
               ),
 
@@ -137,7 +155,9 @@ class _MyadminLogin extends State<MyadminLogin> {
                   height: 140,
                   padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _FormKey.currentState!.validate();
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'choiceLogin.dart';
 import 'choiceSignup.dart';
 import 'doctorDashboard.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 // this page is for the doctor logging in to their account
 void main() => runApp(const doctorLogin());
@@ -52,12 +53,16 @@ class _MydoctorLogin extends State<MydoctorLogin> {
   get kPrimaryColor => null;
 
   bool _passwordVisible = true;
+
+  final GlobalKey<FormState> _FormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
         // creating a form for the user to fill in their details for logging in
         Form(
+          key: _FormKey,
           child: Column(
             children: [
               Container(
@@ -76,6 +81,7 @@ class _MydoctorLogin extends State<MydoctorLogin> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 80, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
@@ -96,11 +102,18 @@ class _MydoctorLogin extends State<MydoctorLogin> {
                       ),
                     ),
                   ),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                      EmailValidator(errorText: 'Invalid Email*')
+                    ],
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
                   controller: passwordController,
                   textInputAction: TextInputAction.done,
@@ -132,6 +145,11 @@ class _MydoctorLogin extends State<MydoctorLogin> {
                               _passwordVisible = !_passwordVisible;
                             });
                           })),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                    ],
+                  ),
                 ),
               ),
 
@@ -141,11 +159,15 @@ class _MydoctorLogin extends State<MydoctorLogin> {
                   padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const doctorDashboard()),
-                      );
+                      if (_FormKey.currentState!.validate()) {
+                        // If the form is valid, display a snackbar. In the real world,
+                        // you'd often call a server or save the information in a database.
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const doctorDashboard()),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(

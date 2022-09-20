@@ -1,8 +1,10 @@
 // importing the required packages and pages
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'choiceSignup.dart';
 import 'choiceLogin.dart';
 import 'doctorDashboard.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 // this is the sign-up page for the doctor
 void main() => runApp(const doctorSignUp());
@@ -56,12 +58,14 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
 
   bool _passwordVisible = true;
   String dropdownValue = 'Choose specialization';
+  final GlobalKey<FormState> _FormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
         // Form() to get the user input so that we can pass it on to the backend
         Form(
+          key: _FormKey,
           child: Column(
             children: [
               // heading text to be displayed
@@ -81,6 +85,7 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
@@ -101,11 +106,17 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                       ),
                     ),
                   ),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                    ],
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
@@ -126,11 +137,17 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                       ),
                     ),
                   ),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                    ],
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
@@ -151,11 +168,18 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                       ),
                     ),
                   ),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                      EmailValidator(errorText: 'Invalid Email*')
+                    ],
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
                   controller: passwordController,
                   textInputAction: TextInputAction.done,
@@ -188,6 +212,11 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                               _passwordVisible = !_passwordVisible;
                             });
                           })),
+                  validator: MultiValidator(
+                    [
+                      RequiredValidator(errorText: 'Required*'),
+                    ],
+                  ),
                 ),
               ),
               // the doctor will have to select their specialization while signing up
@@ -204,6 +233,8 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                               elevation: 5.0,
                               shadowColor: Colors.grey,
                               child: DropdownButtonFormField(
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
                                 decoration: InputDecoration(
                                     fillColor: Colors.white,
                                     filled: true,
@@ -239,21 +270,30 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                                     ),
                                   );
                                 }).toList(),
+                                validator: MultiValidator(
+                                  [
+                                    RequiredValidator(errorText: 'Required*'),
+                                  ],
+                                ),
                               ))),
                     ],
                   )),
 
               // the final signup button
               Container(
-                  height: 100,
-                  padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
+                  height: 150,
+                  padding: const EdgeInsets.fromLTRB(30, 80, 30, 20),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const doctorDashboard()),
-                      );
+                      if (_FormKey.currentState!.validate()) {
+                        // If the form is valid, display a snackbar. In the real world,
+                        // you'd often call a server or save the information in a database.
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const doctorDashboard()),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
