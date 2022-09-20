@@ -110,7 +110,7 @@ public class UserService {
             throw new CustomException("Not present");
         }
 
-        return new LoginResponse("Sucess", authenticationLogin.getToken());
+        return new LoginResponse("Success", authenticationLogin.getToken());
 
     }
 
