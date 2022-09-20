@@ -38,7 +38,7 @@ class _Mywelcome extends State<Mywelcome> {
             navigateAfterSeconds: const loginSignUp(),
             // text that needs to be appeared on the screen
             title: const Text(
-              'ND Telemedicine!',
+              'ND Telemedicine',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40.0,

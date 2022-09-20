@@ -184,11 +184,11 @@ class _doctorAvailState extends State<doctorAvail> {
         child: Form(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                padding: const EdgeInsets.fromLTRB(30, 130, 30, 0),
                 child: const Text(
                   'Set Availabilities',
                   textAlign: TextAlign.center,

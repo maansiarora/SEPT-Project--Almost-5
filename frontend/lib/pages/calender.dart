@@ -122,7 +122,7 @@ class _TableBasicsExampleState extends State {
                         );
                       },
                       shape: const Border(
-                        bottom: BorderSide(width: 2.0, color: Colors.purple),
+                        bottom: BorderSide(width: 0.5, color: Colors.black),
                       ),
                       title: Text('${appointment[index]}'),
                     );
