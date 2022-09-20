@@ -1,25 +1,14 @@
 package com.example.nd_medicine;
 
-import ch.qos.logback.core.CoreConstants;
 import com.example.nd_medicine.controller.AppointmentController;
-import com.example.nd_medicine.controller.UserController;
-import com.example.nd_medicine.entity.Appointment;
-import com.example.nd_medicine.entity.Doctor;
-import com.example.nd_medicine.entity.Patient;
-import com.example.nd_medicine.entity.User;
+import com.example.nd_medicine.entity.*;
 import com.example.nd_medicine.repository.AppointmentRepository;
 import com.example.nd_medicine.repository.DoctorRepository;
 import com.example.nd_medicine.repository.PatientRepository;
 import com.example.nd_medicine.repository.SlotRepository;
-import com.example.nd_medicine.security.Response;
-import com.example.nd_medicine.security.SignUpResponse;
 import com.example.nd_medicine.service.AppointmentService;
-import com.example.nd_medicine.service.UserService;
-import com.jayway.jsonpath.spi.json.GsonJsonProvider;
 import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.internal.verification.VerificationModeFactory;
@@ -31,30 +20,22 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.ArgumentMatchers.any;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.mockito.BDDMockito.given;
-import org.mockito.Mockito;
-import org.mockito.internal.verification.VerificationModeFactory;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = AppointmentController.class)
-class NdMedicineApplicationTests {
+class NdMedicineApplicationAppointmentTests {
 
     @Autowired
     private MockMvc mvc;
@@ -126,7 +107,7 @@ class NdMedicineApplicationTests {
 
     }
     @Test
-    public void givenIncorrectAppointmentId_whenRequestingAppointmentById_thenReturnAppointmentDetails() throws Exception {
+    public void givenIncorrectAppointmentId_whenRequestingAppointmentById_thenReturnEmptyAppointment() throws Exception {
 
         Doctor doctorTest = new Doctor("saiDoc", "kannan", "sai@gmail");
         Patient patientTest = new Patient("saiPatient", "kannan", "sai@gmail");
@@ -150,5 +131,6 @@ class NdMedicineApplicationTests {
         reset(appointmentservice);
 
     }
+
 
 }
