@@ -19,6 +19,6 @@
 * Signup
 * Booking
   
-To run the application locally 
+To run the application locally refer document
 * Backend Report Milestone-2
 * Front-End Workflow Document
