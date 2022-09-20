@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
+public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
 
     //need to fix all this
-    List<Appointment> findAppointmentsByDoctorId(Long doctorId);
-    List<Appointment> findAppointmentsByPatientId(Long patientId);
+    List<Appointment> findAppointmentsByDoctorId(Integer doctorId);
+    List<Appointment> findAppointmentsByPatientId(Integer patientId);
     Appointment findAppointmentByAppointmentId(Integer appointmentId);
 
 

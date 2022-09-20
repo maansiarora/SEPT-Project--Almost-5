@@ -8,7 +8,7 @@ public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DocID")
-    private Long id;
+    private Integer id;
 
     @Column(name = "FirstName")
     private String firstname;
@@ -24,9 +24,9 @@ public class Doctor {
     private String specialise;
 
 
-    public Long getId() { return id; }
+    public Integer getId() { return id; }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Integer id) { this.id = id; }
 
     public String getFirstname() { return firstname; }
 
