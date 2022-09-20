@@ -15,6 +15,7 @@ public class AuthenticationLogin {
 
     private String token;
 
+    //entity with a one to one reletion with the User class where it gets the user_id
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
     private User user;

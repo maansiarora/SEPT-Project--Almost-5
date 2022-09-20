@@ -1,5 +1,7 @@
 package com.example.nd_medicine.security;
 
+
+// just a
 public class LoginResponse {
 
     private String status;

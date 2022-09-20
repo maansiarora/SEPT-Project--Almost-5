@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
-//    Patient findbyPatientId(Long id);
+//    Patient findbyPatientId(Integer id);
 //    List<Patient> findPatientByEmail(String email);
 
 

@@ -1,5 +1,7 @@
 package com.example.nd_medicine.security;
 
+
+//just a class for acknowledgement
 public class Response {
     private String status;
     private String message;

@@ -1,5 +1,7 @@
 package com.example.nd_medicine.security;
 
+
+//for all users sign-up so they can be added into their respective table
 public class SignUpResponse {
     private String firstName;
     private String lastName;

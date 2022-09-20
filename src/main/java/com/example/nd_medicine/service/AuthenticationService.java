@@ -11,10 +11,13 @@ public class AuthenticationService {
     @Autowired
     AuthenticationRepository authenticationRepository;
 
+    //saves an authenticaiton with token -- will be used in later sprints
     public void saveAuthentication(AuthenticationLogin authenticationLogin) {
         authenticationRepository.save(authenticationLogin);
 
     }
+
+    //returns token
 
     public AuthenticationLogin getToken(User user) {
         return authenticationRepository.findByUser(user);

@@ -40,6 +40,8 @@ public class UserService {
 
     // @Transactional
 
+    //Signup -- for testing purposes
+
     public Response signup(SignUpResponse signUpResponse){
 
 
@@ -78,6 +80,8 @@ public class UserService {
 
     }
 
+    //hashes the password with md-5
+
     private String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());
@@ -87,6 +91,8 @@ public class UserService {
         return hash;
     }
 
+
+    //login
     public LoginResponse logIn(Login login) {
 
         User user = userRepository.findByEmail(login.getEmail());
@@ -113,6 +119,8 @@ public class UserService {
         return new LoginResponse("Success", authenticationLogin.getToken());
 
     }
+
+    //sign up doctor
 
     public Response signupDoctor(SignUpResponse signUpResponse) {
 
@@ -162,6 +170,8 @@ public class UserService {
         return response;
 
     }
+
+    //sign up patient
 
     public Response signupPatient(SignUpResponse signUpResponse) {
 
