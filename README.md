@@ -4,7 +4,7 @@
 
 ## Members
 * Maansi Arora - s3885529@student.rmit.edu.au
-* Janhi Tiwari - s3874546@student.rmit.edu.au
+* Janhvi Tiwari - s3874546@student.rmit.edu.au
 * Suhavni Mathur - s3874834@student.rmit.edu.au
 * Darian George - s3899332@student.rmit.edu.au
 * Saicharan Kannan - s3814854@student.rmit.edu.au
