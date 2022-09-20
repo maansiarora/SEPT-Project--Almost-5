@@ -26,7 +26,7 @@ public class AppointmentService {
         return appointmentRepository.findAppointmentsByPatientId(patientId);
     }
 
-    public Appointment findAppointmentByAppointmentId(Long appointmentId) {
+    public Appointment findAppointmentByAppointmentId(Integer appointmentId) {
         return appointmentRepository.findAppointmentByAppointmentId(appointmentId);
     }
 }

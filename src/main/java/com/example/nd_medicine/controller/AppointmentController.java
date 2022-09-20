@@ -61,7 +61,7 @@ public class AppointmentController {
 
     //getting a particular appointment by id useful in admin maybe
     @GetMapping(value = "/{appointmentId}")
-    public Appointment viewAppointmentById(@PathVariable Long appointmentId){
+    public Appointment viewAppointmentById(@PathVariable Integer appointmentId){
         return appointmentService.findAppointmentByAppointmentId(appointmentId);
     }
 

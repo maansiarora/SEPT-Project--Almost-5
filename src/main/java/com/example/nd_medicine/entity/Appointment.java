@@ -12,7 +12,7 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long appointmentId;
+    private Integer appointmentId;
 //    @Column
 //    private Long patientId;
 //    @Column
@@ -36,11 +36,17 @@ public class Appointment {
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date appointmentDate;
 
-    public Long getId() {
+    public Appointment(Integer l, Doctor doctorTest, Patient patientTest) {
+        this.appointmentId = l;
+        this.doctor = doctorTest;
+        this.patient = patientTest;
+    }
+
+    public Integer getId() {
         return appointmentId;
     }
 
-    public void setId(Long appointmentId) {
+    public void setId(Integer appointmentId) {
         this.appointmentId = appointmentId;
     }
 

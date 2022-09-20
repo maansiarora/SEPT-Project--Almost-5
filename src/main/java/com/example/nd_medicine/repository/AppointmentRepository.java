@@ -13,7 +13,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     //need to fix all this
     List<Appointment> findAppointmentsByDoctorId(Long doctorId);
     List<Appointment> findAppointmentsByPatientId(Long patientId);
-    Appointment findAppointmentByAppointmentId(Long appointmentId);
+    Appointment findAppointmentByAppointmentId(Integer appointmentId);
 
 
 
