@@ -1,13 +1,13 @@
 package com.example.nd_medicine.repository;
 
-import com.amr.chatservice.model.ChatMessage;
-import com.amr.chatservice.model.MessageStatus;
-import org.springframework.data.mongodb.repository.MongoRepository;
-
+import com.example.nd_medicine.model.ChatMessage;
+import com.example.nd_medicine.model.MessageStatus;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface ChatMessageRepository
-        extends MongoRepository<ChatMessage, String> {
+        extends JpaRepository<ChatMessage, String> {
 
     long countBySenderIdAndRecipientIdAndStatus(
             String senderId, String recipientId, MessageStatus status);
