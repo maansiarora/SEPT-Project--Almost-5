@@ -4,18 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-//import org.springframework.data.jpa.
-//        mongodb.core.mapping.Document;
-//import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
+
+import javax.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@Document
+@Entity
 public class ChatRoom {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String chatId;
     private String senderId;
     private String recipientId;
