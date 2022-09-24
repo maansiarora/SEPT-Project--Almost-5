@@ -51,4 +51,5 @@ public class ChatMessageService {
     public void updateStatuses(String senderId, String recipientId, MessageStatus status) {
         chatMessageRepository.updateStatusForSenderAndRecipient(senderId, recipientId, status);
     }
+
 }
