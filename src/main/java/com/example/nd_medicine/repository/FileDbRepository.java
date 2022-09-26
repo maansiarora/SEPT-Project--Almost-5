@@ -7,4 +7,7 @@ import com.example.nd_medicine.uploadedfiles.FileDb;
 
 @Repository
 public interface FileDbRepository extends JpaRepository<FileDb, String> {
+
+
+
 }
