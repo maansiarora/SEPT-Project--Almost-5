@@ -10,6 +10,4 @@ class JsonUtil {
         return mapper.writeValueAsBytes(object);
     }
 }
-=======
-}
->>>>>>> origin/feature/booking
+
