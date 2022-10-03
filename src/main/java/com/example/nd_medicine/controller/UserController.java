@@ -15,20 +15,24 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    //sign-up
     @PostMapping("/signup")
     public Response signup(@RequestBody SignUpResponse signUpResponse){
         return userService.signup(signUpResponse);
     }
 
-    //trails
+    //creates a doctor
     @PostMapping("/signup/doctor")
     public Response signupDoctor(@RequestBody SignUpResponse signUpResponse){
         return userService.signupDoctor(signUpResponse);
     }
+    //creates a patient
     @PostMapping("/signup/patient")
     public Response signupPatients(@RequestBody SignUpResponse signUpResponse){
         return userService.signupPatient(signUpResponse);
     }
+
+    //login
     @PostMapping("/login")
     public LoginResponse login(@RequestBody Login login){
         return userService.logIn(login);
