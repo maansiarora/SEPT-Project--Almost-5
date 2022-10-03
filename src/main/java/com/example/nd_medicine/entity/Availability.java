@@ -10,7 +10,7 @@ public class Availability {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "TableID")
-    private Long availId;
+    private Integer availId;
 
 //    @Column(name = "DocID")
 //    private Long doctorId;
@@ -44,11 +44,11 @@ public class Availability {
         this.endTime = endTime;
     }
 
-    public Long getAvailId() {
+    public Integer getAvailId() {
         return availId;
     }
 
-    public void setAvailId(Long id) {
+    public void setAvailId(Integer id) {
         this.availId = id;
     }
 

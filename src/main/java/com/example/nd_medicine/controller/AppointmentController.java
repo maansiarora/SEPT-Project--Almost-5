@@ -61,19 +61,19 @@ public class AppointmentController {
 
     //getting a particular appointment by id useful in admin maybe
     @GetMapping(value = "/{appointmentId}")
-    public Appointment viewAppointmentById(@PathVariable Long appointmentId){
+    public Appointment viewAppointmentById(@PathVariable Integer appointmentId){
         return appointmentService.findAppointmentByAppointmentId(appointmentId);
     }
 
     //all appointments for a particular patient -- useful in patient profile
     @GetMapping(value = "/patient/{patientId}")
-    public List<Appointment> viewAppointmentOfPatient(@PathVariable Long patientId){
+    public List<Appointment> viewAppointmentOfPatient(@PathVariable Integer patientId){
         return appointmentService.findByPatientId(patientId);
     }
 
     //all appointments for a particular patient -- useful in doc profile
     @GetMapping(value = "/doctor/{doctorId}")
-    public List<Appointment> viewAppointmentOfDoctor(@PathVariable Long doctorId){
+    public List<Appointment> viewAppointmentOfDoctor(@PathVariable Integer doctorId){
         return appointmentService.findByDoctorId(doctorId);
     }
 

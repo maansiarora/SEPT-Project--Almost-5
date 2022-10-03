@@ -48,7 +48,7 @@ public class AvailabilityService {
 
     }
 
-    public List<Availability> findAvailabilityByDoctorId(Long id) {
+    public List<Availability> findAvailabilityByDoctorId(Integer id) {
         return availabilityRepository.findAvailabilitiesByDoctorId(id);
     }
 

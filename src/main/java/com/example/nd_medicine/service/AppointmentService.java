@@ -18,15 +18,15 @@ public class AppointmentService {
     public Appointment create(Appointment newAppointment) {
         return appointmentRepository.save(newAppointment);
     }
-    public List<Appointment> findByDoctorId(Long doctorId) {
+    public List<Appointment> findByDoctorId(Integer doctorId) {
         return appointmentRepository.findAppointmentsByDoctorId(doctorId);
     }
 
-    public List<Appointment> findByPatientId(Long patientId) {
+    public List<Appointment> findByPatientId(Integer patientId) {
         return appointmentRepository.findAppointmentsByPatientId(patientId);
     }
 
-    public Appointment findAppointmentByAppointmentId(Long appointmentId) {
+    public Appointment findAppointmentByAppointmentId(Integer appointmentId) {
         return appointmentRepository.findAppointmentByAppointmentId(appointmentId);
     }
 }
