@@ -37,7 +37,7 @@ import java.security.NoSuchAlgorithmException;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = UserController.class)
-class NdMedicineApplicationTests {
+class NdMedicineApplicationTestsUserController {
 
 
     @Autowired
