@@ -19,6 +19,7 @@ import 'pages/viewBooking.dart';
 import 'pages/doctorAvailability.dart';
 import 'pages/patientDashboard.dart';
 import 'pages/doctorAvailabilitySave.dart';
+import 'pages/doctorProfileDash.dart';
 
 void main() => runApp(MaterialApp(initialRoute: '/welcome', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
@@ -41,4 +42,5 @@ void main() => runApp(MaterialApp(initialRoute: '/welcome', routes: {
       '/patientDashboard': (context) => const patientDashboard(),
       '/welcome': (context) => const welcome(),
       '/doctorAvailabilitySave': (context) => const doctorAvailabilitySave(),
+      '/doctorProfileDash': (context) => const doctorProfileDash(),
     }));
