@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  h2:
+    container_name: 'h2'
+    hostname: 'h2'
+    image: 1000kit/h2
+    restart: unless-stopped
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+#      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+#    env_file: ./.env
+    ports:
+      - '8080:8080'
+    volumes:
+      - h2-data:/opt/h2-data
+  app:
+    depends_on:
+      - h2
+    build: ./nd_medicine_app
+    restart: on-failure
+#    env_file: ./.env
+    ports:
+      - '8081:8082'
+    environment:
+      SPRING_APPLICATION_JSON : '{
+      "spring.mvc.view.prefix=/master/"
+      "spring.mvc.view.suffix=jsp"
+      "spring.h2.console.enabled= true"
+      "spring.sql.init.platform=h2"
+      "spring.datasource.url=jdbc:h2:file:./data/database"
+      "spring.jpa.hibernate.ddl-auto=update"
+    }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+
+volumes:
+  h2-data:
