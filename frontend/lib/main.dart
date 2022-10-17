@@ -22,7 +22,7 @@ import 'pages/patientDashboard.dart';
 import 'pages/doctorAvailabilitySave.dart';
 import 'pages/doctorProfileDash.dart';
 
-void main() => runApp(MaterialApp(initialRoute: '/MyApp1', routes: {
+void main() => runApp(MaterialApp(initialRoute: '/welcome', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
       '/doctorSignUp': (context) => const doctorSignUp(),
       '/patientSignUp': (context) => const patientSignUp(),
