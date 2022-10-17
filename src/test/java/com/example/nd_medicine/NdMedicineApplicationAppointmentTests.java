@@ -61,9 +61,6 @@ class NdMedicineApplicationAppointmentTests {
         Doctor doctorTest = new Doctor("saiDoc", "kannan", "sai@gmail");
         Patient patientTest = new Patient("saiPatient", "kannan", "sai@gmail");
 
-//        LocalTime timeTest = LocalTime.of(12, 30, 00);
-//        Date dateTest = new GregorianCalendar(2022, 9, 20).getTime();
-
         Appointment testAppointment = new Appointment(5, doctorTest, patientTest);
 
         given(appointmentservice.create(Mockito.any())).willReturn(testAppointment);
@@ -90,9 +87,6 @@ class NdMedicineApplicationAppointmentTests {
         Doctor doctorTest = new Doctor("saiDoc", "kannan", "sai@gmail");
         Patient patientTest = new Patient("saiPatient", "kannan", "sai@gmail");
 
-//        LocalTime timeTest = LocalTime.of(12, 30, 00);
-//        Date dateTest = new GregorianCalendar(2022, 9, 20).getTime();
-
         Appointment testAppointment = new Appointment(5, doctorTest, patientTest);
 
         given(appointmentservice.findAppointmentByAppointmentId(Mockito.any())).willReturn(testAppointment);
@@ -111,9 +105,6 @@ class NdMedicineApplicationAppointmentTests {
 
         Doctor doctorTest = new Doctor("saiDoc", "kannan", "sai@gmail");
         Patient patientTest = new Patient("saiPatient", "kannan", "sai@gmail");
-
-//        LocalTime timeTest = LocalTime.of(12, 30, 00);
-//        Date dateTest = new GregorianCalendar(2022, 9, 20).getTime();
 
         Appointment testAppointment = new Appointment(5, doctorTest, patientTest);
         Appointment emptyAppointment = new Appointment();
