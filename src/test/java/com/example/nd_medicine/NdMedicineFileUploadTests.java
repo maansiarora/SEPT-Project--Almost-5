@@ -12,6 +12,7 @@ import com.example.nd_medicine.security.Response;
 import com.example.nd_medicine.service.AuthenticationService;
 import com.example.nd_medicine.service.FileDbService;
 import com.example.nd_medicine.service.UserService;
+import com.example.nd_medicine.uploadedfiles.FileDb;
 import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
@@ -70,18 +71,58 @@ class NdMedicineFileUploadTests {
     @Test
     public void givenFile_whenUploadingValidFile_thenReceiveNewFile() throws Exception {
 
-        String fileName = "sample-file-mock.txt";
-        MockMultipartFile sampleFile = new MockMultipartFile(
+        String fileName = "sample_txt_file";
+        MockMultipartFile testFile = new MockMultipartFile(
                 "file",
                 fileName,
                 "text/plain",
-                "This is the file content".getBytes());
+                "Placeholder for Patient Prescription".getBytes());
 
         MockMultipartHttpServletRequestBuilder multipartRequest =
                 MockMvcRequestBuilders.multipart("/file");
 
-        mvc.perform(multipartRequest.file(sampleFile))
-                .andExpect(status().isOk());
+        mvc.perform(multipartRequest.file(testFile))
+                .andExpect(status().isOk())
+                .andDo(MockMvcResultHandlers.print());
+
+    }
+
+    @Test
+    public void givenNoFile_whenAttemptingFileUpload_thenThrowBadRequestError() throws Exception{
+
+        MockMultipartHttpServletRequestBuilder multipartRequest =
+                MockMvcRequestBuilders.multipart("/file");
+
+        mvc.perform(multipartRequest)
+                .andExpect(status().isBadRequest());
+
+    }
+
+    @Test
+    public void givenFile_whenUploadingValidFile_thenCheckIfBytesReceivedAreAsExpected() throws Exception {
+
+        String fileName = "sample_txt_file";
+        MockMultipartFile testFile = new MockMultipartFile(
+                "file",
+                fileName,
+                "text/plain",
+                "Placeholder for Patient Prescription".getBytes());
+
+        FileDb filedb = new FileDb("7", "file", "f", testFile.getBytes());
+
+        given(fdb_service.store(any())).willReturn(filedb);
+
+// Not sure how to do this?
+
+//        mvc.perform(post("/file")
+//                        .contentType(MediaType.MULTIPART_FORM_DATA)
+//                        .content(String.valueOf(testFile)))
+//                .andDo(MockMvcResultHandlers.print())
+//                .andExpect(MockMvcResultMatchers
+//                        .jsonPath("$.status", CoreMatchers.is("Failed")));
+
+        System.out.println("Printing");
+        System.out.println(fdb_service.getFileList());
 
     }
 
