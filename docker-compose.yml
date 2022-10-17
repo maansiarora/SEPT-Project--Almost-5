@@ -24,13 +24,14 @@ services:
       - '8081:8082'
     environment:
       SPRING_APPLICATION_JSON : '{
-      "spring.mvc.view.prefix=/master/"
-      "spring.mvc.view.suffix=jsp"
-      "spring.h2.console.enabled= true"
-      "spring.sql.init.platform=h2"
-      "spring.datasource.url=jdbc:h2:file:./data/database"
-      "spring.jpa.hibernate.ddl-auto=update"
-    }'
+        "spring.mvc.view.prefix " : "/master/",
+        "spring.mvc.view.suffix ": "jsp",
+        "spring.h2.console.enabled " : "true",
+        "spring.sql.init.platform ": "h2",
+        "spring.datasource.url" : "jdbc:h2:file:./data/database",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'
+
     volumes:
       - .m2:/root/.m2
     stdin_open: true
