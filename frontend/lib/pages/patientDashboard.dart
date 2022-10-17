@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'bookingMain.dart';
 import 'chatMenu.dart';
+import 'medicinePatient.dart';
 
 // this page is the patient's dashboard.
 // it still needs to be made properly.
@@ -72,6 +73,28 @@ class _MypatientDashboard extends State<MypatientDashboard> {
                     primary: Colors.deepPurple[300],
                   ),
                   child: const Text('Booking',
+                      style: TextStyle(
+                        fontSize: 19,
+                      )),
+                )),
+            Container(
+                height: 100,
+                padding: const EdgeInsets.fromLTRB(50, 51, 50, 0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DynamicTextFieldView()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    primary: Colors.deepPurple[300],
+                  ),
+                  child: const Text('Add Medicines',
                       style: TextStyle(
                         fontSize: 19,
                       )),

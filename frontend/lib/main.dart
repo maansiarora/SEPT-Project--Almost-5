@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pages/medicinePatient.dart';
 import 'pages/welcome.dart';
 import 'pages/doctorDashboard.dart';
 import 'pages/doctorSignUp.dart';
@@ -21,7 +22,7 @@ import 'pages/patientDashboard.dart';
 import 'pages/doctorAvailabilitySave.dart';
 import 'pages/doctorProfileDash.dart';
 
-void main() => runApp(MaterialApp(initialRoute: '/welcome', routes: {
+void main() => runApp(MaterialApp(initialRoute: '/MyApp1', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
       '/doctorSignUp': (context) => const doctorSignUp(),
       '/patientSignUp': (context) => const patientSignUp(),
@@ -43,4 +44,5 @@ void main() => runApp(MaterialApp(initialRoute: '/welcome', routes: {
       '/welcome': (context) => const welcome(),
       '/doctorAvailabilitySave': (context) => const doctorAvailabilitySave(),
       '/doctorProfileDash': (context) => const doctorProfileDash(),
+      '/MyApp1': (context) => DynamicTextFieldView(),
     }));
