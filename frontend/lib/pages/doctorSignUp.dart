@@ -1,10 +1,16 @@
 // importing the required packages and pages
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../model/EmployeeModel.dart';
+//import 'pages/model/doctorSignUpModel.dart';
+import '../model/doctorSignUpModel.dart';
 import 'choiceSignup.dart';
 import 'choiceLogin.dart';
 import 'doctorDashboard.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:http/http.dart' as http;
 
 // this is the sign-up page for the doctor
 void main() => runApp(const doctorSignUp());
@@ -26,7 +32,7 @@ class doctorSignUp extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => choiceSignUp()),
+                MaterialPageRoute(builder: (context) => const choiceSignUp()),
               );
             },
             child: const Icon(Icons.arrow_back,
@@ -49,18 +55,64 @@ class MydoctorSignUp extends StatefulWidget {
   State<MydoctorSignUp> createState() => _MydoctorSignUp();
 }
 
+/*Future<doctorSignUpModel> registerEmployees(
+    String firstName, String lastName, BuildContext context) async {
+  var Url = "http://10.0.2.2:8080/user/signup/doctor";
+  var response = await http.post(Url,
+      headers: <String, String>{"Content-Type": "application/json"},
+      body: jsonEncode(<String, String>{
+        "firstName": firstName,
+        "lastName": lastName,
+      }));
+  throw '';
+}*/
+
+Future<doctorSignUpModel> createUser(
+  String password,
+  String firstname,
+  String lastname,
+) async {
+  final response = await http.post(
+    Uri.parse('http://10.0.2.2:8080/user/signup/doctor'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'firstname': firstname,
+      'lastname': lastname,
+      'password': password,
+    }),
+  );
+
+  if (response.statusCode == 201) {
+    return doctorSignUpModel.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to create User.');
+  }
+}
+
 class _MydoctorSignUp extends State<MydoctorSignUp> {
   TextEditingController nameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+
+  late doctorSignUpModel doc;
 
   get kPrimaryColor => null;
 
   bool _passwordVisible = true;
   String dropdownValue = 'Choose specialization';
+
+  //String lastname = "";
   final GlobalKey<FormState> _FormKey = GlobalKey<FormState>();
+  bool isPushData = false;
+  String firstname = "";
+  String lastname = "";
+  String password = "";
   @override
   Widget build(BuildContext context) {
+    String lastname;
     return ListView(
       children: <Widget>[
         // Form() to get the user input so that we can pass it on to the backend
@@ -87,9 +139,10 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                 child: TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
+                  controller: nameController,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
-                  onSaved: (email) {},
+                  onSaved: (value) {},
                   decoration: const InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey),
@@ -118,6 +171,7 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                 child: TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.text,
+                  controller: lastnameController,
                   textInputAction: TextInputAction.next,
                   cursorColor: Colors.deepPurple,
                   onSaved: (email) {},
@@ -285,13 +339,28 @@ class _MydoctorSignUp extends State<MydoctorSignUp> {
                   padding: const EdgeInsets.fromLTRB(30, 80, 30, 20),
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_FormKey.currentState!.validate()) {
+                      print(nameController.text);
+                      print(lastnameController.text);
+                      print(passwordController.text);
+                      createUser(nameController.text, lastnameController.text,
+                          passwordController.text);
+                      setState(() {
+                        isPushData = true;
+                      });
+                      Future.delayed(const Duration(seconds: 2))
+                          .then((value) => Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const doctorDashboard()),
+                              ));
+                      /*if (_FormKey.currentState!.validate()) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const doctorDashboard()),
                         );
-                      }
+                      }*/
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
