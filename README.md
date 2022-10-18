@@ -14,11 +14,14 @@
 * Github repository : https://github.com/suhavnimathur/SEPT-Project--Almost-5
 * jira Board : https://almost5.atlassian.net/jira/software/projects/A5/boards/1/roadmap
 	
-## Code documentation - Milestone 2 - Frontend Backend Not Intergrated
+## Code documentation - Milestone 3
 * Login
 * Signup
 * Booking
-  
-To run the application locally refer document
+* Chat
+* Fileupload
+* Add Medicine
+
+To run the application locally refer document submitted in Milstone 2
 * Backend Report Milestone-2
 * Front-End Workflow Document
