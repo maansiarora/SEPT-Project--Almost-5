@@ -1,5 +1,6 @@
 // importing different packages and pages
 import 'package:flutter/material.dart';
+import 'package:sept/pages/patientProfileDash.dart';
 import 'bookingMain.dart';
 import 'chatMenu.dart';
 import 'medicinePatient.dart';
@@ -54,6 +55,28 @@ class _MypatientDashboard extends State<MypatientDashboard> {
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
                 child: Divider(
                   color: Colors.black,
+                )),
+            Container(
+                height: 100,
+                padding: const EdgeInsets.fromLTRB(50, 51, 50, 0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const patientProfileDash()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    primary: Colors.deepPurple[300],
+                  ),
+                  child: const Text('Profile',
+                      style: TextStyle(
+                        fontSize: 19,
+                      )),
                 )),
             Container(
                 height: 100,

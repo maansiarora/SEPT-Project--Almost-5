@@ -21,6 +21,7 @@ import 'pages/doctorAvailability.dart';
 import 'pages/patientDashboard.dart';
 import 'pages/doctorAvailabilitySave.dart';
 import 'pages/doctorProfileDash.dart';
+import 'pages/patientProfileDash.dart';
 
 void main() => runApp(MaterialApp(initialRoute: '/welcome', routes: {
       '/choiceLogin': (context) => const choiceLogin(),
@@ -45,4 +46,5 @@ void main() => runApp(MaterialApp(initialRoute: '/welcome', routes: {
       '/doctorAvailabilitySave': (context) => const doctorAvailabilitySave(),
       '/doctorProfileDash': (context) => const doctorProfileDash(),
       '/MyApp1': (context) => DynamicTextFieldView(),
+      '/patientProfileDash': (context) => const patientProfileDash(),
     }));
